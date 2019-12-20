@@ -24,7 +24,14 @@ class testLigue
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
-	
+	@Test
+	void testSetNom()
+	{
+		Ligue ligue = new Ligue("Fortnite");
+		String nom = "Aouar";
+		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar");
+		assertTrue(employe.getNom().contains(nom));
+	}
 	@Test
 	void  testGetAdministrateur()
 	{
