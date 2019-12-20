@@ -28,10 +28,8 @@ class TestEmploye {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testGetNom() {
-		fail("Not yet implemented");
-	}
+	
+	
 
 	@Test
 	void testSetNom() {
