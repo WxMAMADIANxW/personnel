@@ -10,11 +10,9 @@ class testLigue
 {
 	@Test
 	void testCreateLigue() 
-	{
-		Ligue ligue = new Ligue("Fortnite");
-		String nom = "Fortnite";
-		ligue.setNom(nom);
-		assertTrue(ligue.getNom().contains(nom));
+	{	
+		Ligue ligue = new Ligue("Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
 	}
 
 	@Test
