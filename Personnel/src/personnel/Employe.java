@@ -16,7 +16,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	
-	Employe(Ligue ligue, String nom, String prenom, String mail, String password)
+	public Employe(Ligue ligue, String nom, String prenom, String mail, String password)
 	{
 		this.nom = nom;
 		this.prenom = prenom;
