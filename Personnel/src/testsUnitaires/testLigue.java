@@ -57,4 +57,11 @@ class testLigue
 		assertTrue(ligue.toString().contains("Fortnite"));
 	}
 	
+	void testGetEmployes()
+	{
+		Ligue ligue = new Ligue("Fortnite");
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar");
+		assertTrue(ligue.getEmployes().contains(employe));
+	}
+	
 }
