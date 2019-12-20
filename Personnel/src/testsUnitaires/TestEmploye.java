@@ -64,10 +64,7 @@ class TestEmploye {
 		assertEquals(employe.getMail(),Email);
 	}
 
-	@Test
-	void testCheckPassword() {
-		fail("Not yet implemented");
-	}
+	
 
 	@Test
 	void testSetPassword() {
