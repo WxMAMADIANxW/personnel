@@ -55,12 +55,16 @@ class TestEmploye {
 
 	@Test
 	void testGetMail() {
-		fail("Not yet implemented");
+	
 	}
 
 	@Test
 	void testSetMail() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "ka","me","ha","me");
+		String Email = "Oussam.Aouar@Ol.com";
+		employe.setMail(Email);
+		assertEquals(employe.getMail(),Email);
 	}
 
 	@Test
