@@ -53,10 +53,7 @@ class TestEmploye {
 		assertEquals(employe.getPrenom(),Eprenom);
 	}
 
-	@Test
-	void testGetMail() {
 	
-	}
 
 	@Test
 	void testSetMail() {
