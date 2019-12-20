@@ -71,7 +71,11 @@ class TestEmploye {
 
 	@Test
 	void testSetPassword() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "ka","me","ha","me");
+		String Emdp = "azerty" ;
+		employe.setPassword(Emdp);
+		assertTrue(employe.checkPassword(Emdp));
 	}
 
 	@Test
