@@ -49,7 +49,11 @@ class TestEmploye {
 
 	@Test
 	void testSetPrenom() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "ka","me","ha","me");
+		String Eprenom = "Oussam" ;
+		employe.setPrenom(Eprenom);
+		assertEquals(employe.getPrenom(),Eprenom);
 	}
 
 	@Test
