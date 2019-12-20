@@ -11,8 +11,10 @@ class testLigue
 	@Test
 	void testCreateLigue() 
 	{
-		Ligue ligue = new Ligue("Fléchettes");
-		assertEquals("Fléchettes", ligue.getNom());
+		Ligue ligue = new Ligue("Fortnite");
+		String nom = "Fortnite";
+		ligue.setNom(nom);
+		assertTrue(ligue.getNom().contains(nom));
 	}
 
 	@Test
@@ -28,6 +30,7 @@ class testLigue
 	{
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = GestionPersonnel.getGestionPersonnel().getRoot();
+		ligue.setAdministrateur(employe);
 		assertEquals(employe, ligue.getAdministrateur());
 	}
 	@Test
