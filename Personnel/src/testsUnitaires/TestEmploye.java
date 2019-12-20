@@ -42,10 +42,7 @@ class TestEmploye {
 		
 	}
 
-	@Test
-	void testGetPrenom() {
-		fail("Not yet implemented");
-	}
+	
 
 	@Test
 	void testSetPrenom() {
