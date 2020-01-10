@@ -1,5 +1,7 @@
 package testsUnitaires;
 
+
+
 import static org.junit.Assert.assertEquals;
 
 import static org.junit.Assert.assertFalse;
@@ -9,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import personnel.Employe;
+import personnel.GestionPersonnel;
 import personnel.Ligue;
 
 class TestEmploye {
@@ -33,17 +36,15 @@ class TestEmploye {
 
 	@Test
 	void testSetNom() {
-		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = new Employe(ligue, "ka","me","ha","me");
-		String Enom ="Aouar" ;
-		employe.setNom(Enom);
-		assertEquals(employe.getNom(),Enom);
-		
-		
+		Ligue ligue = new Ligue("La LDC");
+		Employe employe = new Employe(ligue,"surname","name","mail","pass");
+		String  nom = "Janothan";
+		employe.setNom(nom);
+		assertEquals(employe.getNom(),nom);
 	}
 
 	
-
+	
 	@Test
 	void testSetPrenom() {
 		Ligue ligue = new Ligue("Fléchettes");
@@ -77,12 +78,16 @@ class TestEmploye {
 
 	@Test
 	void testGetLigue() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "ka","me","ha","me");
+		assertEquals(employe.getLigue(),ligue);
 	}
 
 	@Test
 	void testRemove() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "ka","me","ha","me");
+		assertFalse(ligue.getEmployes().contains(employe));
 	}
 
 	@Test
