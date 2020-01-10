@@ -16,10 +16,7 @@ import personnel.Ligue;
 
 class TestEmploye {
 
-	@Test
-	void testEmploye() {
-		fail("Not yet implemented");
-	}
+	
 
 	@Test
 	void testEstAdmin() {
