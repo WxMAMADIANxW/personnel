@@ -10,7 +10,7 @@ class testLigue
 {
 	@Test
 	void testCreateLigue() 
-	{
+	{	
 		Ligue ligue = new Ligue("Fléchettes");
 		assertEquals("Fléchettes", ligue.getNom());
 	}
@@ -22,12 +22,20 @@ class testLigue
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
-	
+	@Test
+	void testSetNom()
+	{
+		Ligue ligue = new Ligue("Fortnite");
+		String nom = "Aouar";
+		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar");
+		assertTrue(employe.getNom().contains(nom));
+	}
 	@Test
 	void  testGetAdministrateur()
 	{
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = GestionPersonnel.getGestionPersonnel().getRoot();
+		ligue.setAdministrateur(employe);
 		assertEquals(employe, ligue.getAdministrateur());
 	}
 	@Test
@@ -55,6 +63,13 @@ class testLigue
 		String nom = "Fortnite";
 		ligue.setNom(nom);
 		assertTrue(ligue.toString().contains("Fortnite"));
+	}
+	
+	void testGetEmployes()
+	{
+		Ligue ligue = new Ligue("Fortnite");
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar");
+		assertTrue(ligue.getEmployes().contains(employe));
 	}
 	
 }
