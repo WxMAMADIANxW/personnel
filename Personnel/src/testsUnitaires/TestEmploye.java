@@ -97,7 +97,9 @@ class TestEmploye {
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe employe = new Employe(ligue, "Aouar","Oussam","Mail","password");
+		assertEquals(employe.toString(), "Aouar Oussam Mail ("+ligue.toString()+")");
 	}
 
 }
