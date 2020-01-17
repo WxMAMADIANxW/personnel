@@ -90,6 +90,7 @@ class TestEmploye {
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
 		employe.remove();
 		assertFalse(ligue.getEmployes().contains(employe));
+		assertNull(employe.getLigue());
 	}
 
 	@Test
