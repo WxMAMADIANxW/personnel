@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import personnel.Employe;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
@@ -94,7 +95,7 @@ class TestEmploye {
 
 	@Test
 	void testCompareTo() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue("Flï¿½chettes");
 		Employe john=  ligue.addEmploye("john","ney","mare","pass01",null,null);
 		Employe marie= ligue.addEmploye("marie","hey","mire","pass02",null,null);
 		assertNotEquals( john.getPrenom().compareTo(marie.getPrenom()),0);
@@ -108,5 +109,15 @@ class TestEmploye {
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
 		assertEquals(employe.toString(), "Aouar Oussam Mail ("+ligue.toString()+")");
 	}
-
+	
+	@Test
+	void testGetArrive() {
+		Ligue ligue = new Ligue("FlÃ©chettes");
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
+		LocalDate date = LocalDate.of(2020, 01, 21);
+		employe.setDateArrive(date);
+		assertEquals(employe.getDateArrive(date), date);
+	}
 }
+
+
