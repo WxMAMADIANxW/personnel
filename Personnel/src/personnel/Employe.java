@@ -17,7 +17,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private Date dateArrive , dateDepart;
 	private Ligue ligue;
 	
-	public Employe(Ligue ligue, String nom, String prenom, String mail, String password,Date dateArrive ,Date dateDepart)
+	Employe(Ligue ligue, String nom, String prenom, String mail, String password,Date dateArrive ,Date dateDepart)
 	{
 		this.nom = nom;
 		this.prenom = prenom;
