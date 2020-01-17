@@ -136,10 +136,25 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password= password;
 	}
 
+	/**
+	 * Change la date d'arrivé de l'employé.
+	 * @param dateArrive
+	 */
 	public void setDateArrive(LocalDate dateArrive)
 	{
 		this.dateArrive = dateArrive;
 	}
+	
+	/**
+	 * Change la date de départ de l'employé.
+	 * @param dateDepart
+	 */
+	
+	public void setDateDepart(LocalDate dateDepart)
+	{
+		this.dateDepart = dateDepart;
+	}
+	
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.
