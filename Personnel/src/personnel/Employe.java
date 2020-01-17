@@ -1,5 +1,5 @@
 package personnel;
-
+import java.util.Date;
 import java.io.Serializable;
 
 /**
@@ -14,15 +14,19 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
+	private Date dateArrive , dateDepart;
 	private Ligue ligue;
 	
-	public Employe(Ligue ligue, String nom, String prenom, String mail, String password)
+	public Employe(Ligue ligue, String nom, String prenom, String mail, String password,Date dateArrive ,Date dateDepart)
 	{
 		this.nom = nom;
 		this.prenom = prenom;
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		this.dateArrive = dateArrive;
+		this.dateDepart = dateDepart;
+		
 	}
 	
 	/**

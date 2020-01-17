@@ -3,6 +3,10 @@ package testsUnitaires;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collection;
+import java.util.Set;
+import java.util.SortedSet;
+
 import org.junit.jupiter.api.Test;
 
 import personnel.Employe;
@@ -18,10 +22,9 @@ class testGestion {
 	
 	void testAdd() 
 	{
-		Ligue ligue = new Ligue("Ouais");
-		//Employe employe = ligue.addEmploye("Bouchard", "G�rard", "g.bouchard@gmail.com", "azerty"); 
-		//a(ligue, ligue.getEmployes().first());
-		assertEquals(ligue, ligue.getEmployes().first());
+		SortedSet<Ligue> ligues = null;
+		Ligue ligue = new Ligue("La LDC");
+		((Collection<Ligue>) ligue).add((Ligue) ligues);
 
 	}
 	
