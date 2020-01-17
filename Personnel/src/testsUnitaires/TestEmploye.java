@@ -20,12 +20,17 @@ class TestEmploye {
 
 	@Test
 	void testEstAdmin() {
-		fail("Not yet implemented");
+	Ligue ligue = new Ligue("La LDC");
+	Employe employe = new Employe(ligue,"Aouar","Oussam","mail","pass");
+	employe.getLigue().setAdministrateur(employe);
+	assertTrue(employe.estAdmin(ligue));
 	}
 
 	@Test
 	void testEstRoot() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("La LDC");
+		Employe employe = new Employe(ligue,"Aouar","Oussam","mail","pass");
+		
 	}
 
 	
@@ -89,7 +94,12 @@ class TestEmploye {
 
 	@Test
 	void testCompareTo() {
-		fail("Not yet implemented");
+		Ligue ligue = new Ligue("Fléchettes");
+		Employe john= new Employe(ligue,"john","ney","mare","pass01");
+		Employe marie= new Employe(ligue,"marie","hey","mire","pass02");
+		assertNotEquals( john.getPrenom().compareTo(marie.getPrenom()),0);
+		
+		
 	}
 
 	@Test
