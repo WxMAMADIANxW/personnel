@@ -79,6 +79,10 @@ public class GestionPersonnel implements Serializable
 	{
 		ligues.add(ligue);
 	}
+	/**
+	 * Supprime une ligue de la liste ligues.
+	 * @param ligue
+	 */
 	
 
 	void remove(Ligue ligue)
