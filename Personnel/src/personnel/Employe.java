@@ -156,6 +156,27 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	/**
+	 * Retourne la date d'arrive de l'employé.
+	 * @param dateArrive
+	 * @return dateArrive
+	 */
+	
+	public LocalDate getDateArrive(LocalDate dateArrive)
+	{
+		return dateArrive;
+	}
+	
+	/**
+	 * Retourne la date de départ de l'employé.
+	 * @param dateDepart
+	 * @return dateDepart
+	 */
+	public LocalDate getDateDepart(LocalDate dateDepart)
+	{
+		return dateDepart;
+	}
+	
+	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.
 	 */
