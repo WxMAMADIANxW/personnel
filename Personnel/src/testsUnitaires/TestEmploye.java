@@ -28,8 +28,7 @@ class TestEmploye {
 
 	@Test
 	void testEstRoot() {
-		Ligue ligue = new Ligue("La LDC");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
+		
 		
 	}
 
@@ -89,7 +88,8 @@ class TestEmploye {
 	void testRemove() {
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
-		assertTrue(ligue.getEmployes().contains(employe));
+		employe.remove();
+		assertFalse(ligue.getEmployes().contains(employe));
 	}
 
 	@Test
