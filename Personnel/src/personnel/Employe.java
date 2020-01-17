@@ -157,7 +157,7 @@ public class Employe implements Serializable, Comparable<Employe>
 			ligue.remove(this);
 		}
 		else
-			throw new ImpossibleDeSupprimerRoot();
+			throw new ImpossibleDeSupprimerRoot();  
 	}
 
 	@Override
