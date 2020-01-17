@@ -113,10 +113,11 @@ class TestEmploye {
 	
 	@Test
 	void testGetArrive() {
+		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,null);
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null,dateArrive);
 		LocalDate date = LocalDate.of(2020, 01, 21);
-		employe.setDateArrive(date);
+		employe.setDateDepart(date);
 		assertEquals(employe.getDateArrive(date), date);
 	}
 	
