@@ -21,10 +21,13 @@ class TestEmploye {
 
 	@Test
 	void testEstAdmin() {
+	
 	Ligue ligue = new Ligue("La LDC");
-	Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-	employe.getLigue().setAdministrateur(employe);
-	assertTrue(employe.estAdmin(ligue));
+	Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
+	Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
+	Admin.getLigue().setAdministrateur(Admin);
+	assertTrue(Admin.estAdmin(ligue));
+	assertFalse(employe.estAdmin(ligue));
 	}
 
 	@Test
