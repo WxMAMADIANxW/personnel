@@ -19,7 +19,7 @@ class testLigue
 	void testAddEmploye() 
 	{
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null,null); 
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	@Test
@@ -27,7 +27,7 @@ class testLigue
 	{
 		Ligue ligue = new Ligue("Fortnite");
 		String nom = "Aouar";
-		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar",null,null);
+		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(employe.getNom().contains(nom));
 	}
 	@Test
@@ -42,7 +42,7 @@ class testLigue
 	void testRemove()
 	{
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "GÃ©rard", "g.bouchard@gmail.com", "azerty",null,null);
+		Employe employe = ligue.addEmploye("Bouchard", "GÃ©rard", "g.bouchard@gmail.com", "azerty",null);
 		employe.remove();
 		assertFalse(ligue.getEmployes().contains(employe));
 	}
@@ -68,7 +68,7 @@ class testLigue
 	void testGetEmployes()
 	{
 		Ligue ligue = new Ligue("Fortnite");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar",null,null);
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(ligue.getEmployes().contains(employe));
 	}
 	
