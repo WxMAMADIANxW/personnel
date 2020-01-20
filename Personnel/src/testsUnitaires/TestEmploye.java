@@ -90,6 +90,7 @@ class TestEmploye {
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		assertEquals(employe.getLigue(),ligue);
+		
 	}
 
 	@Test
@@ -130,7 +131,6 @@ class TestEmploye {
 	
 	@Test
 	void testGetDepart() {
-		LocalDate dateDepart = LocalDate.of(2020, 01, 01);
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		LocalDate date = LocalDate.of(2020, 01, 21);
