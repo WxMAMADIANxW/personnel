@@ -32,15 +32,10 @@ class TestEmploye {
 
 	@Test
 	void testEstRoot() {
-		Ligue ligue = new Ligue("La LDC");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-		employe.estRoot();
-		assertEquals(employe.estRoot(),true);
-		
-		
+		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
+		Employe employe = gestionPersonnel.getRoot();
+		assertEquals(employe.estRoot(),true);		
 	}
-
-	
 	
 
 	@Test
@@ -121,12 +116,12 @@ class TestEmploye {
 	
 	@Test
 	void testGetArrive() {
-		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",dateArrive);
-		LocalDate date = LocalDate.of(2020, 01, 21);
-		employe.setDateDepart(date);
-		assertEquals(employe.getDateArrive(date), date);
+		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
+		//LocalDate date = LocalDate.of(2020, 01, 21);
+		//employe.setDateDepart(date);
+		assertEquals(employe.getDateArrive(), dateArrive);
 	}
 	
 	@Test
@@ -135,7 +130,7 @@ class TestEmploye {
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		LocalDate date = LocalDate.of(2020, 01, 21);
 		employe.setDateDepart(date);
-		assertEquals(employe.getDateDepart(date), date);
+		assertEquals(employe.getDateDepart(), date);
 	}
 }
 

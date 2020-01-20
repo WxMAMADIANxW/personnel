@@ -160,9 +160,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * @return dateArrive
 	 */
 	
-	public LocalDate getDateArrive(LocalDate dateArrive)
+	public LocalDate getDateArrive()
 	{
-		return dateArrive;
+		return this.dateArrive;
 	}
 	
 	/**
@@ -170,9 +170,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * @param dateDepart
 	 * @return dateDepart
 	 */
-	public LocalDate getDateDepart(LocalDate dateDepart)
+	public LocalDate getDateDepart()
 	{
-		return dateDepart;
+		return this.dateDepart;
 	}
 	
 	/**
