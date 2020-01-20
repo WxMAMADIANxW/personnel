@@ -11,16 +11,7 @@ import personnel.Ligue;
 
 class TestGestionPersonnel {
 
-	@Test
-	void testAddRemove() {
-		SortedSet<Ligue> ligues = new TreeSet<>(); ;
-		Ligue ligue = new Ligue("La LDC");
-		ligues.add(ligue);
-		assertTrue(ligues.contains(ligue));
-		ligues.remove(ligue);
-		assertFalse(ligues.contains(ligue));
-		
-	}
+	
 
 
 }
