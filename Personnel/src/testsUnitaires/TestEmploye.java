@@ -34,7 +34,7 @@ class TestEmploye {
 	void testEstRoot() {
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 		Employe employe = gestionPersonnel.getRoot();
-		assertEquals(employe.estRoot(),true);		
+		assertTrue(employe.estRoot());		
 	}
 	
 
