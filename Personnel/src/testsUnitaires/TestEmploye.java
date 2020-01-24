@@ -119,7 +119,8 @@ class TestEmploye {
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
 		assertEquals(employe.getDateArrive(), dateArrive);
 	}
-
+	
+	Bonjour;
 	
 	@Test
 	void testGetDepart() {
