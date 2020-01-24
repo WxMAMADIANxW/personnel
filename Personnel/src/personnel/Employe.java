@@ -133,6 +133,11 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.password= password;
 	}
+	
+	/**
+	 * Controle la saisie de la date d'arriv�e
+	 * @param dateDepart
+	 */
 
 	/**
 	 * Change la date d'arrivé de l'employé.
@@ -144,13 +149,20 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	/**
-	 * Change la date de départ de l'employé.
+	 * Changement avec controle de la date de départ de l'employé.
+	 * 
 	 * @param dateDepart
 	 */
 	
 	public void setDateDepart(LocalDate dateDepart)
 	{
-		this.dateDepart = dateDepart;
+		if(dateDepart.isBefore(this.dateArrive)) {
+			throw new RuntimeException();
+		}
+		else {
+			this.dateDepart = dateDepart;
+		}
+		
 		
 	}
 	
@@ -203,7 +215,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		else
 			throw new ImpossibleDeSupprimerRoot();  
 	}
-
+	
 	@Override
 	public int compareTo(Employe autre)
 	{
