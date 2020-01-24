@@ -1,7 +1,6 @@
 package testsUnitaires;
 
 
-
 import static org.junit.Assert.assertEquals;
 
 import static org.junit.Assert.assertFalse;
@@ -21,13 +20,12 @@ class TestEmploye {
 
 	@Test
 	void testEstAdmin() {
-	
-	Ligue ligue = new Ligue("La LDC");
-	Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-	Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
-	Admin.getLigue().setAdministrateur(Admin);
-	assertTrue(Admin.estAdmin(ligue));
-	assertFalse(employe.estAdmin(ligue));
+		Ligue ligue = new Ligue("La LDC");
+		Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
+		Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
+		Admin.getLigue().setAdministrateur(Admin);
+		assertTrue(Admin.estAdmin(ligue));
+		assertFalse(employe.estAdmin(ligue));
 	}
 
 	@Test
@@ -119,10 +117,9 @@ class TestEmploye {
 		Ligue ligue = new Ligue("Fléchettes");
 		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
-		LocalDate date = LocalDate.of(2020, 01, 21);
-		employe.setDateDepart(date);
 		assertEquals(employe.getDateArrive(), dateArrive);
 	}
+
 	
 	@Test
 	void testGetDepart() {
