@@ -120,8 +120,15 @@ class TestEmploye {
 		assertEquals(employe.getDateArrive(), dateArrive);
 	}
 	
-	Bonjour;
-	
+	Test A
+	@Test
+	void testSetArrive() {
+		Ligue ligue = new Ligue("Fléchettes");
+		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
+		assertEquals(employe.getDateArrive(), dateArrive);
+	}
+		
 	@Test
 	void testGetDepart() {
 		Ligue ligue = new Ligue("Fléchettes");
