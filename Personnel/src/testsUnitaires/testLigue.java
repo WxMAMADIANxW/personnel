@@ -38,7 +38,7 @@ class testLigue
 		Ligue autreLigue = new Ligue("Harpon");
 		Employe employe1 = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "azerty",null);
 		Employe employe2 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null);
-		Employe employeAutreL = autreLigue.addEmploye("Dupont", "Dupont", "dd@gmail.com", "azerty",null);
+		//Employe employeAutreL = autreLigue.addEmploye("Dupont", "Dupont", "dd@gmail.com", "azerty",null);
 		ligue.setAdministrateur(employe1);
 		assertEquals(employe1, ligue.getAdministrateur());
 		ligue.setAdministrateur(employe2);
