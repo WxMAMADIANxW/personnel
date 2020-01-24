@@ -130,10 +130,14 @@ class TestEmploye {
 	@Test
 	void testGetDepart() {
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
+		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",dateArrive);
 		LocalDate date = LocalDate.of(2020, 01, 21);
+		//LocalDate beforeDate = LocalDate.of(2019,12, 07);
 		employe.setDateDepart(date);
 		assertEquals(employe.getDateDepart(), date);
+		//employe.setDateDepart(beforeDate);
+		//assertNotEquals(employe.getDateDepart(),beforeDate);
 	}
 }
 
