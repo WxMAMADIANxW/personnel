@@ -35,9 +35,17 @@ class testLigue
 	void  testGetAdministrateur()
 	{
 		Ligue ligue = new Ligue("Fléchettes");
-		Employe employe = GestionPersonnel.getGestionPersonnel().getRoot();
-		ligue.setAdministrateur(employe);
-		assertEquals(employe, ligue.getAdministrateur());
+		Ligue autreLigue = new Ligue("Harpon");
+		Employe employe1 = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "azerty",null);
+		Employe employe2 = ligue.addEmploye("Bouchard", "GÃ©rard", "g.bouchard@gmail.com", "azerty",null);
+		Employe employeAutreL = autreLigue.addEmploye("Dupont", "Dupont", "dd@gmail.com", "azerty",null);
+		ligue.setAdministrateur(employe1);
+		assertEquals(employe1, ligue.getAdministrateur());
+		ligue.setAdministrateur(employe2);
+		assertNotEquals(employe1, ligue.getAdministrateur());
+		assertEquals(employe2, ligue.getAdministrateur());
+		//ligue.setAdministrateur(employeAutreL);
+		//assertNotEquals(employeAutreL, ligue.getAdministrateur());
 	}
 	@Test
 	void testRemove()
