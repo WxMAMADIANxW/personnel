@@ -24,10 +24,12 @@ class TestEmploye {
 	
 	Ligue ligue = new Ligue("La LDC");
 	Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
+	Employe NonAdmin = ligue.addEmploye("Depay", "Memphis", "depay@gmail.com", "memphis", null);
 	Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
 	Admin.getLigue().setAdministrateur(Admin);
 	assertTrue(Admin.estAdmin(ligue));
 	assertFalse(employe.estAdmin(ligue));
+	assertFalse(NonAdmin.estAdmin(ligue));
 	}
 
 	@Test
@@ -119,8 +121,8 @@ class TestEmploye {
 		Ligue ligue = new Ligue("Fléchettes");
 		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
-		//LocalDate date = LocalDate.of(2020, 01, 21);
-		//employe.setDateDepart(date);
+		LocalDate date = LocalDate.of(2020, 01, 21);
+		employe.setDateDepart(date);
 		assertEquals(employe.getDateArrive(), dateArrive);
 	}
 	
