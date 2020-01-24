@@ -1,6 +1,5 @@
-EMPLOYE: IdEmp , nomEmp , preEmp , mail,  password
-DEVIENS, 11 EMPLOYE , 11 ROOT
-ROOT: IdRoot 
+EMPLOYE: IdEmp , nomEmp , preEmp , mail,  password, droits
+
 
 APPARTIENT, 1N LIGUE, 11 EMPLOYE
 ADMINSITRE, 11 EMPLOYE, 1N LIGUE
