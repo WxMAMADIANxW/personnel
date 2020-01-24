@@ -21,6 +21,7 @@ class testLigue
 		Ligue ligue = new Ligue("Fléchettes");
 		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null); 
 		assertEquals(employe, ligue.getEmployes().first());
+		assertEquals(employe.getLigue(),ligue);
 	}
 	@Test
 	void testSetNom()
