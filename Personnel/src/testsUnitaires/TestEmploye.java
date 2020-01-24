@@ -33,8 +33,11 @@ class TestEmploye {
 	@Test
 	void testEstRoot() {
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
-		Employe employe = gestionPersonnel.getRoot();
-		assertTrue(employe.estRoot());		
+		Ligue ligue = new Ligue("La LDC");
+		Employe Root = gestionPersonnel.getRoot();
+		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
+		assertTrue(Root.estRoot());	
+		assertFalse(employe.estRoot());
 	}
 	
 
