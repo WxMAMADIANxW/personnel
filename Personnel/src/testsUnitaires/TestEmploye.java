@@ -123,7 +123,7 @@ class TestEmploye {
 		assertEquals(employe.getDateArrive(), dateArrive);
 	}
 	
-	Test A
+	
 	@Test
 	void testSetArrive() {
 		Ligue ligue = new Ligue("Fléchettes");
