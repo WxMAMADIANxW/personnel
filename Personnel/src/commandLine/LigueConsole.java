@@ -1,8 +1,10 @@
 package commandLine;
 
-import static commandLineMenus.rendering.examples.util.InOut.getString;
+import static commandLineMenus.rendering.examples.util.InOut.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 import commandLineMenus.List;
 import commandLineMenus.Menu;
@@ -50,6 +52,7 @@ public class LigueConsole
 	{
 		return new Option("Afficher les employes", "l", () -> {System.out.println(ligue.getEmployes());});
 	}
+	
 
 	private Option ajouterLigue()
 	{
@@ -66,6 +69,16 @@ public class LigueConsole
 		menu.add(supprimer(ligue));
 		menu.addBack("q");
 		return menu;
+	}
+	
+private LocalDate  getDate() {
+		int year,month,day;
+		year = getInt("Year :");
+		month= getInt("month :");
+		day = getInt("day :");
+		
+		LocalDate date = LocalDate.of(year, month, day);
+		return date;
 	}
 
 	private Option changerNom(final Ligue ligue)
@@ -89,7 +102,7 @@ public class LigueConsole
 				{
 					ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
-						getString("password : "),null);
+						getString("password : "),getDate());
 				}
 		);
 	}
