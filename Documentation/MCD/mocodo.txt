@@ -2,6 +2,6 @@ EMPLOYE: IdEmp , nomEmp , preEmp , mail,  password, droitRoot, dateArrive, dateD
 
 
 APPARTIENT, 1N LIGUE, 01 EMPLOYE
-ADMINSITRE, 11 EMPLOYE, 11 LIGUE
+ADMINSITRE, 01 EMPLOYE, 01 LIGUE
 
 LIGUE: IdLig , nomLig
