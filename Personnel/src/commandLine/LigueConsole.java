@@ -106,6 +106,14 @@ private LocalDate  getDate() {
 				}
 		);
 	}
+	private Menu editer(Employe employe, Ligue ligue)
+	{
+		Menu menu = new Menu(" Editer "+ employe.getNom() +" "+employe.getPrenom());
+		menu.add(modifierEmploye(ligue));
+		menu.add(supprimerEmploye(ligue));
+		menu.addBack("q");
+		return menu;
+	}
 	
 	private Menu gererEmployes(Ligue ligue)
 	{
@@ -113,7 +121,6 @@ private LocalDate  getDate() {
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
 		menu.add(selectionnerEmploye(ligue));
-		menu.add(modifierEmploye(ligue));
 		menu.add(supprimerEmploye(ligue));
 		menu.addBack("q");
 		return menu;
@@ -122,7 +129,7 @@ private LocalDate  getDate() {
 	{
 		return new List<>("Séléctionner un(e) Employé(e)","n",
 		()-> new ArrayList<>(ligue.getEmployes()),
-		(element)->employeConsole.editerEmploye(element)
+		(element)->editer(element, ligue)
 		);
 	}
 
