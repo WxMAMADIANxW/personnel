@@ -112,10 +112,18 @@ private LocalDate  getDate() {
 		Menu menu = new Menu("G√©rer les employ√©s de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
+		menu.add(selectionnerEmploye(ligue));
 		menu.add(modifierEmploye(ligue));
 		menu.add(supprimerEmploye(ligue));
 		menu.addBack("q");
 		return menu;
+	}
+	private List<Employe> selectionnerEmploye(Ligue ligue)
+	{
+		return new List<>("SÈlÈctionner un(e) EmployÈ(e)","n",
+		()-> new ArrayList<>(ligue.getEmployes()),
+		(element)->employeConsole.editerEmploye(element)
+		);
 	}
 
 	private List<Employe> supprimerEmploye(final Ligue ligue)
