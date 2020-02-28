@@ -110,7 +110,7 @@ private LocalDate  getDate() {
 	{
 		Menu menu = new Menu(" Editer "+ employe.getNom() +" "+employe.getPrenom());
 		menu.add(modifierEmploye(ligue));
-		menu.add(supprimerEmploye(ligue));
+		menu.add(supprimerEmploye(ligue,employe));
 		menu.addBack("q");
 		return menu;
 	}
@@ -121,7 +121,7 @@ private LocalDate  getDate() {
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
 		menu.add(selectionnerEmploye(ligue));
-		menu.add(supprimerEmploye(ligue));
+		//menu.add(supprimerEmploye(ligue,null));
 		menu.addBack("q");
 		return menu;
 	}
@@ -133,12 +133,10 @@ private LocalDate  getDate() {
 		);
 	}
 
-	private List<Employe> supprimerEmploye(final Ligue ligue)
+	private Option supprimerEmploye(final Ligue ligue,Employe employe)
 	{
-		return new List<>("Supprimer un employé", "s", 
-				() -> new ArrayList<>(ligue.getEmployes()),
-				(index, element) -> {element.remove();}
-				);
+		return new Option("Suprimmer "+ employe.getNom()+" "+employe.getPrenom(),"v"
+				,()->{ligue.getEmployes().remove(employe);});
 	}
 	
 	private List<Employe> changerAdministrateur(final Ligue ligue)
