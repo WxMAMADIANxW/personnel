@@ -3,7 +3,7 @@ CREATE DATABASE nom_base;
 CREATE TABLE employe
 (
     Idemp INT PRIMARY KEY,
-    IdLig INT FOREIGN KEY REFERENCES ligue(IdLig)
+    IdLig INT,
     nomEmp VARCHAR(50),
     preEmp VARCHAR(50),
     mail VARCHAR(100),
@@ -18,4 +18,6 @@ CREATE TABLE ligue
     IdLig INT PRIMARY KEY,
     nomLig VARCHAR(50)
    )
-
+   
+ALTER TABLE employe
+ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
