@@ -2,22 +2,20 @@ CREATE DATABASE nom_base;
 
 CREATE TABLE employe
 (
-    Idemp INT PRIMARY KEY NOT NULL,
+    Idemp INT PRIMARY KEY,
     IdLig INT FOREIGN KEY REFERENCES ligue(IdLig)
     nomEmp VARCHAR(50),
     preEmp VARCHAR(50),
     mail VARCHAR(100),
     Password VARCHAR(100),
-    droitRoot BIT(1) ou BIT(0)?,
+    droitRoot BOOLEAN,
     dateArrive DATE,
     dateDepart DATE
-    //l’association appartient n’a pas d’attribut du coup on 		met rien ?
 )
 
 CREATE TABLE ligue
 (
-    IdLig INT PRIMARY KEY NOT NULL,
-    nomLig VARCHAR(50),
+    IdLig INT PRIMARY KEY,
+    nomLig VARCHAR(50)
    )
 
-//Pour l’association administre les cardinalices sont 1 à 1 du coup on ajoute rien ?
