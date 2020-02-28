@@ -106,12 +106,12 @@ private LocalDate  getDate() {
 				}
 		);
 	}
-	private Menu editer(Employe employe, Ligue ligue)
+	private Menu editer(Employe employe)
 	{
 		Menu menu = new Menu(" Editer "+ employe.getNom() +" "+employe.getPrenom());
 		menu.add(employeConsole.editerEmploye(employe));
 		menu.add(finContrat(employe));
-		menu.add(supprimerEmploye(ligue,employe));
+		menu.add(supprimerEmploye(employe));
 		menu.addBack("q");
 		return menu;
 	}
@@ -128,16 +128,16 @@ private LocalDate  getDate() {
 	}
 	private List<Employe> selectionnerEmploye(Ligue ligue)
 	{
-		return new List<>("Séléctionner un(e) Employé(e)","n",
+		return new List<>("Sï¿½lï¿½ctionner un(e) Employï¿½(e)","n",
 		()-> new ArrayList<>(ligue.getEmployes()),
-		(element)->editer(element, ligue)
+		(element)->editer(element)
 		);
 	}
 
-	private Option supprimerEmploye(final Ligue ligue,Employe employe)
+	private Option supprimerEmploye(final Employe employe)
 	{
 		return new Option("Suprimmer "+ employe.getNom()+" "+employe.getPrenom(),"v"
-				,()->{ligue.getEmployes().remove(employe);});
+				,()->{employe.remove();});
 	}
 	
 	private List<Employe> changerAdministrateur(final Ligue ligue)
