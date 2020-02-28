@@ -109,9 +109,9 @@ private LocalDate  getDate() {
 	private Menu editer(Employe employe, Ligue ligue)
 	{
 		Menu menu = new Menu(" Editer "+ employe.getNom() +" "+employe.getPrenom());
-		//menu.add(modifierEmploye(ligue));
-		menu.add(supprimerEmploye(ligue,employe));
 		menu.add(employeConsole.editerEmploye(employe));
+		menu.add(finContrat(employe));
+		menu.add(supprimerEmploye(ligue,employe));
 		menu.addBack("q");
 		return menu;
 	}
@@ -156,6 +156,10 @@ private LocalDate  getDate() {
 	private Option supprimer(Ligue ligue)
 	{
 		return new Option("Supprimer", "d", () -> {ligue.remove();});
+	}
+	private Option finContrat(Employe employe) {
+		return new Option("Ajouter une date de fin de contrat ","k",
+				()-> {employe.setDateDepart(getDate());});
 	}
 	
 }
