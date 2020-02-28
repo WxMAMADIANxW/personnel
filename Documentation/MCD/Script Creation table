@@ -11,13 +11,13 @@ CREATE TABLE employe
     droitRoot BOOLEAN,
     dateArrive DATE,
     dateDepart DATE
-)
+);
 
 CREATE TABLE ligue
 (
     IdLig INT PRIMARY KEY,
     nomLig VARCHAR(50)
-   )
+ );
    
 ALTER TABLE employe
 ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
