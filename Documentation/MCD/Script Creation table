@@ -2,22 +2,28 @@ CREATE DATABASE nom_base;
 
 CREATE TABLE employe
 (
-    Idemp INT PRIMARY KEY NOT NULL,
-    IdLig INT FOREIGN KEY REFERENCES ligue(IdLig)
-    nomEmp VARCHAR(50),
-    preEmp VARCHAR(50),
-    mail VARCHAR(100),
-    Password VARCHAR(100),
-    droitRoot BIT(1) ou BIT(0)?,
-    dateArrive DATE,
+    Idemp INT PRIMARY KEY,
+    IdLig INT,
+    nomEmp VARCHAR(50) NOT NULL,
+    preEmp VARCHAR(50) NOT NULL,
+    mail VARCHAR(100) NOT. NULL,
+    Password VARCHAR(100) NOT NULL,
+    droitRoot BOOLEAN NOT NULL,
+    dateArrive DATE. NOT NULL,
     dateDepart DATE
-    //l’association appartient n’a pas d’attribut du coup on 		met rien ?
-)
+);
 
 CREATE TABLE ligue
 (
-    IdLig INT PRIMARY KEY NOT NULL,
-    nomLig VARCHAR(50),
-   )
+    IdLig INT PRIMARY KEY,
+    IdEmp INT,
+    nomLig VARCHAR(50) NOT NULL
+ );
+   
+ALTER TABLE employe
+ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
 
-//Pour l’association administre les cardinalices sont 1 à 1 du coup on ajoute rien ?
+ALTER TABLE ligue
+ADD FOREIGN KEY (IdEmp) REFERENCES employe(IdEmp);
+
+
