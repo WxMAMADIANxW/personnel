@@ -52,7 +52,7 @@ class testLigue
 		Ligue ligue = new Ligue("Fl�chettes");
 		Ligue lig = gestionPersonnel.remove(ligue);
 		lig.remove(ligue);
-		assertTrue(ligue.remove());
+		assertTrue(lig.remove(ligue));
 	}
 	
 	@Test
