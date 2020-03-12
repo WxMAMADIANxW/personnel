@@ -1,5 +1,6 @@
 package testsUnitaires;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -50,9 +51,10 @@ class testLigue
 	{
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 		Ligue ligue = new Ligue("Fl�chettes");
-		GestionPersonnel.add(ligue);
+		gestionPersonnel.getLigues().add(ligue);
+		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 		ligue.remove();
-		assertNotEquals(ligue2, ligue.remove());
+
 	}
 	
 	@Test
