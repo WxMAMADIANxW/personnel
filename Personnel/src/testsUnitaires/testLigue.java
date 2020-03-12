@@ -54,7 +54,7 @@ class testLigue
 		gestionPersonnel.getLigues().add(ligue);
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 		ligue.remove();
-
+		assertFalse(gestionPersonnel.getLigues().contains(ligue));
 	}
 	
 	@Test
