@@ -50,9 +50,9 @@ class testLigue
 	{
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 		Ligue ligue = new Ligue("Fl�chettes");
-		Ligue lig = gestionPersonnel.remove(ligue);
-		lig.remove(ligue);
-		assertTrue(lig.remove(ligue));
+		Ligue ligue1 = new Ligue("Bowling");
+		ligue1.remove();
+		assertEquals(ligue, ligue1.remove());
 	}
 	
 	@Test

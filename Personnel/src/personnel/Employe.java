@@ -147,7 +147,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.dateArrive = dateArrive;
 	}
-	
+
 	/**
 	 * Changement avec controle de la date de départ de l'employé.
 	 * 

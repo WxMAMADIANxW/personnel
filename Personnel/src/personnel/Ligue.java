@@ -117,7 +117,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * de la ligue.
 	 */
 	
-	private void remove()
+	public void remove()
 	{
 		GestionPersonnel.getGestionPersonnel().remove(this);
 	}
