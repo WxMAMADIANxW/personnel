@@ -135,7 +135,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	/**
-	 * Controle la saisie de la date d'arrivée
+	 * Controle la saisie de la date d'arrivï¿½e
 	 * @param dateDepart
 	 */
 
@@ -147,7 +147,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.dateArrive = dateArrive;
 	}
-	
+
 	/**
 	 * Changement avec controle de la date de dÃ©part de l'employÃ©.
 	 * 
@@ -228,7 +228,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res =" Nom :"+ nom + "\n Prénom :  " + prenom + "\n Date D'arrviée : " + dateArrive+"\n Date Départ : "+ dateDepart+ " \n(";
+		String res =" Nom :"+ nom + "\n Prï¿½nom :  " + prenom + "\n Date D'arrviï¿½e : " + dateArrive+"\n Date Dï¿½part : "+ dateDepart+ " \n(";
 		if (estRoot())
 			res += "super-utilisateur";
 		else

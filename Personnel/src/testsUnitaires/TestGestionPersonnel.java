@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import personnel.Ligue;
 
-class TestGestionPersonnel {
+class TestGestionPersonnel{
 
 	
 
