@@ -1,23 +1,26 @@
-CREATE DATABASE nom_base;
+DROP DATABASE IF EXISTS personnel;
+
+CREATE DATABASE personnel;
+USE personnel;
 
 CREATE TABLE employe
 (
-    Idemp INT PRIMARY KEY,
+    Idemp INT PRIMARY KEY,
     IdLig INT,
-    nomEmp VARCHAR(50) NOT NULL,
-    preEmp VARCHAR(50) NOT NULL,
-    mail VARCHAR(100) NOT. NULL,
+    nomEmp VARCHAR(50) NOT NULL,
+    preEmp VARCHAR(50) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
     Password VARCHAR(100) NOT NULL,
     droitRoot BOOLEAN NOT NULL,
-    dateArrive DATE. NOT NULL,
+    dateArrive DATE NOT NULL,
     dateDepart DATE
 );
 
 CREATE TABLE ligue
 (
-    IdLig INT PRIMARY KEY,
+    IdLig INT PRIMARY KEY,
     IdEmp INT,
-    nomLig VARCHAR(50) NOT NULL
+    nomLig VARCHAR(50) NOT NULL
  );
    
 ALTER TABLE employe
@@ -25,5 +28,4 @@ ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
 
 ALTER TABLE ligue
 ADD FOREIGN KEY (IdEmp) REFERENCES employe(IdEmp);
-
 
