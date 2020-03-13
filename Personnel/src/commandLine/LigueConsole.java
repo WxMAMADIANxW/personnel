@@ -145,14 +145,7 @@ private LocalDate  getDate() {
 		return null;
 	}		
 
-//	private List<Employe> modifierEmploye(final Ligue ligue)
-//	{
-//		return new List<>("Modifier un employé", "e", 
-//				() -> new ArrayList<>(ligue.getEmployes()),
-//				(index, element) -> {employeConsole.editerEmploye(element);}
-//				);
-//	}
-	
+
 	private Option supprimer(Ligue ligue)
 	{
 		return new Option("Supprimer", "d", () -> {ligue.remove();});
