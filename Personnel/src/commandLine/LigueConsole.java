@@ -122,7 +122,6 @@ private LocalDate  getDate() {
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
 		menu.add(selectionnerEmploye(ligue));
-		//menu.add(supprimerEmploye(ligue,null));
 		menu.addBack("q");
 		return menu;
 	}
