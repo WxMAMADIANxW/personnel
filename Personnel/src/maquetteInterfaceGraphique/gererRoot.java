@@ -70,7 +70,11 @@ public class gererRoot extends JFrame {
 		btnChangerLeMot.setBounds(27, 148, 153, 23);
 		contentPane.add(btnChangerLeMot);
 		
-		JButton btnQuitter = new JButton("Quitter");
+		JButton btnQuitter = new JButton("Retour");
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnQuitter.setBounds(311, 209, 89, 23);
 		contentPane.add(btnQuitter);
 	}
