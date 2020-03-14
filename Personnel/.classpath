@@ -8,6 +8,6 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CommandLine"/>
-	<classpathentry kind="lib" path="/Users/alex/Downloads/mysql-connector-java-8.0.19.zip"/>
+	<classpathentry kind="lib" path="librairie_bdd/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
