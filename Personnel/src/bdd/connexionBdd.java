@@ -7,13 +7,14 @@ import java.sql.DriverManager;
 public class connexionBdd {
     
     public static void main(String[] args) {
+    	String BDD = "personnel";
+    	String port = "3308";
+        String url = "jdbc:mysql://localhost:"+ port + "/" + BDD + "?serverTimezone=UTC";
+        String user = "root";
+        String password = "";
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                String BDD = "personnel";
-                String url = "jdbc:mysql://localhost:3308/" + BDD + "?serverTimezone=UTC";
-                String user = "root";
-                String password = "";
-                
+      
                 try {
                 	Connection conn = DriverManager.getConnection(url, user, password);
                 	System.out.println("T'es co bg");
