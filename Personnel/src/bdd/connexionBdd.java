@@ -5,26 +5,27 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class connexionBdd {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-          
-		
-		Connection conn = null;
+    
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 String BDD = "personnel";
-                String url = "jdbc:mysql://localhost:8888/" + BDD;
+                String url = "jdbc:mysql://localhost:3308/" + BDD + "?serverTimezone=UTC";
                 String user = "root";
-                String password = "root";
+                String password = "";
                 
                 try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    conn = DriverManager.getConnection(url, user, password);
-                    System.out.println("Connecter");
-                } catch (Exception e){
-                    e.printStackTrace();
-                    System.out.println("Erreur");
-                    System.exit(0);
+                	Connection conn = DriverManager.getConnection(url, user, password);
+                	System.out.println("T'es co bg");
                 }
-    	}
+                catch (Exception e)
+                {
+                	e.printStackTrace();
+                	System.out.println("Erreur");
+                	System.exit(0);
+                }
+            }
+        });
+    }
 
 }
