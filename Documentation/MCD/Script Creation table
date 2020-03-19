@@ -19,7 +19,7 @@ CREATE TABLE employe
 CREATE TABLE ligue
 (
     IdLig INT PRIMARY KEY,
-    IdEmp INT,
+    IdAdmin INT,
     nomLig VARCHAR(50) NOT NULL
  );
    
