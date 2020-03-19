@@ -3,7 +3,7 @@ package bdd;
 
 import java.util.*;
 
-import com.luv2code.jdbc.employeesearch.core.Employee;
+
 
 import java.sql.*;
 import java.sql.Date;
@@ -15,6 +15,7 @@ import personnel.GestionPersonnel;
 import personnel.Ligue;
 import personnel.Passerelle;
 import personnel.SauvegardeImpossible;
+
 
 public class connexionBdd implements Passerelle{
 	private static Connection myConn ;
@@ -73,7 +74,7 @@ public class connexionBdd implements Passerelle{
     
     
     public List<Employe> getEmploye() throws Exception {
-    	List<Employe> list = newArrayList();
+    	List<Employe> list = new ArrayList<Employe>();
     	
     	Statement st = null;
     	ResultSet rs = null;
@@ -87,6 +88,10 @@ public class connexionBdd implements Passerelle{
     			list.add(tempEmploye);
     		}
     	}
+    	finally {
+    		st.close();
+    		rs.close();
+    	}
     }
     
     private Employe convertRowToEmploye(ResultSet rs) throws SQLException {
@@ -98,7 +103,7 @@ public class connexionBdd implements Passerelle{
 		Date dateArrive = rs.getDate("dateArrive");
 		int ligue = rs.getInt("idLig");
 		
-		Employe tempEmploye = new Employe(ligue, nom, prenom, mail, password, dateArrive);
+		Employe tempEmploye = new Employe(ligue, nom, prenom, mail, password, dateArrive,null);
 		
 		return tempEmploye;
 	}
