@@ -17,7 +17,7 @@ import personnel.Passerelle;
 import personnel.SauvegardeImpossible;
 
 
-public class connexionBdd implements Passerelle{
+public class EmployeDAO implements Passerelle{
 	private static Connection myConn ;
 	
     public static void main(String[] args) throws Exception{
