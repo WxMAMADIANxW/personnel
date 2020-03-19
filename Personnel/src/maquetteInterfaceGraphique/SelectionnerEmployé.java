@@ -1,4 +1,4 @@
-package commandLine;
+package maquetteInterfaceGraphique;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
