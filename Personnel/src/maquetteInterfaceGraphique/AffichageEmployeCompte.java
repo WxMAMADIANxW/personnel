@@ -20,12 +20,12 @@ public class AffichageEmployeCompte extends JFrame {
 	private JTextField txtGerarddupond;
 	private JLabel lblContrat;
 	private JLabel lblDateDbut;
-	private JTextField textField;
 	private JLabel lblDateFin;
-	private JTextField textField_1;
 	private JButton btnSauverLesModificatoin;
 	private JButton btnAnnuler;
 	private JButton btnRetour;
+	private JLabel label;
+	private JLabel label_1;
 
 	/**
 	 * Launch the application.
@@ -96,21 +96,9 @@ public class AffichageEmployeCompte extends JFrame {
 		lblDateDbut.setBounds(16, 192, 60, 14);
 		contentPane.add(lblDateDbut);
 		
-		textField = new JTextField();
-		textField.setText("10/03/2020");
-		textField.setBounds(80, 189, 96, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
 		lblDateFin = new JLabel("date fin:");
 		lblDateFin.setBounds(193, 192, 48, 14);
 		contentPane.add(lblDateFin);
-		
-		textField_1 = new JTextField();
-		textField_1.setText("12/03/2020");
-		textField_1.setBounds(243, 189, 96, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
 		
 		btnSauverLesModificatoin = new JButton("sauver les modification");
 		btnSauverLesModificatoin.addActionListener(new ActionListener() {
@@ -127,6 +115,14 @@ public class AffichageEmployeCompte extends JFrame {
 		btnRetour = new JButton("Retour");
 		btnRetour.setBounds(320, 227, 89, 23);
 		contentPane.add(btnRetour);
+		
+		label = new JLabel("10/03/2020");
+		label.setBounds(77, 192, 56, 14);
+		contentPane.add(label);
+		
+		label_1 = new JLabel("11/03/2020");
+		label_1.setBounds(240, 192, 56, 14);
+		contentPane.add(label_1);
 	}
 
 }
