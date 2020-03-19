@@ -44,7 +44,7 @@ public class EmployeDAO{
 	    	
 	    	try {
 	    		myStmt = myConn.createStatement();
-	    		myRs = myStmt.executeQuery("SELECT * FROM employe");
+	    		myRs = myStmt.executeQuery("SELECT nomEmp, preEmp, mail, dateArrive FROM employe");
 	    		rsMeta = myRs.getMetaData();
 	    		
 	    		for(int i = 1; i <= rsMeta.getColumnCount(); i++)
@@ -74,6 +74,22 @@ public class EmployeDAO{
 	    	return liste;
 	    	
 	 }
+	 
+	 public void setEmploye() throws Exception {
+		 Statement myStmt = null;
+		 int nb;
+		 
+		 myStmt = myConn.createStatement();
+		 nb = myStmt.executeUpdate("INSERT INTO employe"
+		 		+ " VALUES ('4', '1', 'Lopes', 'Anthony', 'aLopes@ol.com', 'lopes' , '0' , '2020-03-17', null)");
+		 
+		 System.out.println("nb lignes modifs : " +nb);
+		 
+		 myStmt.close();
+		
+		 
+		 
+	 }
     
     private static void close( Statement myStmt, ResultSet myRs)
 			throws SQLException {
@@ -89,6 +105,8 @@ public class EmployeDAO{
     
     public static void main(String[] args) throws Exception{
     	EmployeDAO dao = new EmployeDAO();
+    	System.out.println(dao.getEmploye());
+    	dao.setEmploye();
     	System.out.println(dao.getEmploye());
         
     }
