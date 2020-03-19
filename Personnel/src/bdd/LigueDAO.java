@@ -10,18 +10,18 @@ public class LigueDAO {
 	private Connection conn;
 	
 	
-	public void EmployeeDAO() throws Exception{
+	public LigueDAO() throws Exception{
 		Properties props = new Properties();
 		props.load(new FileInputStream("demo.properties"));
 		
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");;
-		String url = props.getProperty("url");;
+		String dburl = props.getProperty("dburl");;
 		
 		// connect to database
-        conn = DriverManager.getConnection(url, user, password);
+        conn = DriverManager.getConnection(dburl, user, password);
 		
-		System.out.println("DB connection successful to: " + url);	
+		System.out.println("DB connection successful to: " + dburl);	
 	}
 	
 	public List<Ligue> getLigues() throws Exception {
@@ -38,29 +38,52 @@ public class LigueDAO {
 			
 			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
 	         {
-	             System.out.println("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
+	             System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
 	         }
+			
+			System.out.println();
 			 while(myRs.next()) 
 	         {
 	             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
 	             {
-	                 System.out.println("" + myRs.getObject(i).toString() + "	|");
+	                 System.out.print("" + myRs.getObject(i).toString() + "	|");
 	             }
 	         }
-			 myRs.close();
-			 myStmt.close();
+			
 		}
 		catch(SQLException e){
 			e.printStackTrace();
             System.out.println(e);
             System.exit(0);
 		}
-		 
+		finally {
+			close(conn,myStmt, myRs);
+		}
+		
 		 
 		return liste;
 		
 	}
-
 	
+	private static void close(Connection conn, Statement myStmt, ResultSet myRs)
+			throws SQLException {
+
+		if (myRs != null) {
+			myRs.close();
+		}
+
+		if (myStmt != null) {
+			
+		}
+		
+		if (conn != null) {
+			conn.close();
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+			LigueDAO dao = new LigueDAO();
+			System.out.println(dao.getLigues());
+	}
 
 }
