@@ -17,111 +17,81 @@ import personnel.Passerelle;
 import personnel.SauvegardeImpossible;
 
 
-public class EmployeDAO implements Passerelle{
-	private static Connection myConn ;
+public class EmployeDAO{
+	private Connection myConn ;
 	
+	public EmployeDAO() throws Exception{
+		Properties props = new Properties();
+        props.load(new FileInputStream("demo.properties"));
+        
+        String user = props.getProperty("user");
+        String password = props.getProperty("password");
+        String dburl = props.getProperty("dburl");
+        
+        // Connexion à la base de données.
+        
+        myConn = DriverManager.getConnection(dburl, user, password);
+        
+        System.out.println("Connecté à la BDD");
+	}
+	
+	 public List<Employe> getEmploye() throws Exception {
+	    	List<Employe> liste = new ArrayList<Employe>();
+	    	
+	    	Statement myStmt = null;
+	    	ResultSet myRs = null;
+	    	ResultSetMetaData rsMeta = null;
+	    	
+	    	try {
+	    		myStmt = myConn.createStatement();
+	    		myRs = myStmt.executeQuery("SELECT * FROM employe");
+	    		rsMeta = myRs.getMetaData();
+	    		
+	    		for(int i = 1; i <= rsMeta.getColumnCount(); i++)
+		         {
+		             System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
+		         }
+				
+				System.out.println();
+				 while(myRs.next()) 
+		         {
+		             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
+		             {
+		                 System.out.print("" + myRs.getObject(i).toString() + "	|");
+		                 
+		             }
+		         }
+	    	}
+	    	catch(SQLException e){
+				e.printStackTrace();
+	            System.out.println(e);
+	            System.exit(0);
+			}
+			finally {
+				close(myStmt, myRs);
+			}
+	    	
+	    	return liste;
+	    	
+	 }
+    
+    private static void close( Statement myStmt, ResultSet myRs)
+			throws SQLException {
+
+		if (myRs != null) {
+			myRs.close();
+		}
+
+		if (myStmt != null) {
+			
+		}
+	}
+    
     public static void main(String[] args) throws Exception{
-    	
-    	
-    	myConn = null;
-    	
-    	try {
-    		Properties props = new Properties();
-            props.load(new FileInputStream("demo.properties"));
-            
-            String user = props.getProperty("user");
-            String password = props.getProperty("password");
-            String dburl = props.getProperty("dburl");
-            
-            myConn = DriverManager.getConnection(dburl, user, password);
-            
-            System.out.println("Connecté à la BDD");	
-    	}
-    	 
-         catch(SQLException e)
- 		{
- 			System.out.println(e);
- 		}
+    	EmployeDAO dao = new EmployeDAO();
+    	System.out.println(dao.getEmploye());
         
     }
-    
-    public List<Employe> chercheEmploye(String nom) throws Exception {
-		List<Employe> list = new ArrayList<>();
 
-		PreparedStatement st = null;
-		ResultSet rs = null;
-
-		try {
-			nom += "%";
-			st = myConn.prepareStatement("select * from employe where nomEmp like ?");
-			
-			st.setString(1, nom);
-			
-			rs = st.executeQuery();
-			
-			while (rs.next()) {
-				Employe tempEmployee = convertRowToEmploye(rs);
-				list.add(tempEmployee);
-			}
-			
-			return list;
-		}
-		finally {
-			close(st, rs);
-		}
-	}
-
-    
-    
-    public List<Employe> getEmploye() throws Exception {
-    	List<Employe> list = new ArrayList<Employe>();
-    	
-    	Statement st = null;
-    	ResultSet rs = null;
-    	
-    	try {
-    		st = myConn.createStatement();
-    		rs = st.executeQuery("SELECT nomEmp, preEmp, mail FROM employe");
-    		
-    		while (rs.next()) {
-    			Employe tempEmploye = convertRowToEmploye(rs);
-    			list.add(tempEmploye);
-    		}
-    		return list;
-    	}
-    	finally {
-    		st.close();
-    		rs.close();
-    	}
-    }
-    
-    private Employe convertRowToEmploye(ResultSet rs) throws SQLException {
-		
-		String nom = rs.getString("nomEmp");
-		String prenom = rs.getString("preEmp");
-		String mail = rs.getString("mail");
-		String password = rs.getString("password");
-		LocalDate dateArrive = ((Employe) rs).getDateArrive();
-		Ligue ligue = new Ligue("");
-		
-		Employe tempEmploye = ligue.addEmploye( nom, prenom, mail, password, dateArrive);
-		
-		return tempEmploye;
-	}
-    
-    private void close(Statement st, ResultSet rs) throws SQLException {
-		close(st, rs);		
-	}
-	@Override
-	public GestionPersonnel getGestionPersonnel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel) throws SauvegardeImpossible {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
