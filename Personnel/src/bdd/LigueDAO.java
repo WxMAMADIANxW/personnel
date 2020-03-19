@@ -3,7 +3,9 @@ package bdd;
 import java.util.*;
 import java.io.*;
 import java.sql.*;
+import java.time.LocalDate;
 
+import personnel.Employe;
 import personnel.Ligue;
 
 public class LigueDAO {
@@ -23,6 +25,36 @@ public class LigueDAO {
 		
 		System.out.println("DB connection successful to: " + dburl);	
 	}
+//	public Employe addEmploye(String nom, String prenom, String mail, String password,LocalDate dateArrive) throws Exception{
+//		Employe employe = new Employe( nom, prenom, mail, password, dateArrive);
+//		
+//		Statement myStmt = null;
+//		ResultSet myRs = null;
+//		ResultSetMetaData rsMeta = null;
+//		try {
+//			myStmt = myConn.createStatement();
+//			myRs = myStmt.executeQuery("insert into employe(IdLig) values (1)");
+//			rsMeta = myRs.getMetaData();
+//			
+//			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
+//	         {
+//	             System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
+//	         }
+//			
+//			System.out.println();
+//			 while(myRs.next()) 
+//	         {
+//	             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
+//	             {
+//	                 System.out.print("" + myRs.getObject(i).toString() + "	|");
+//	             }
+//	             return employe;
+//	         }
+//		}
+//		finally {
+//			close(myStmt,myRs);
+//		}
+//	}
 	
 	public List<Ligue> getLigues() throws Exception {
 		List<Ligue> liste = new ArrayList<Ligue>();
@@ -44,10 +76,8 @@ public class LigueDAO {
 			System.out.println();
 			 while(myRs.next()) 
 	         {
-	             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
-	             {
-	                 System.out.print("" + myRs.getObject(i).toString() + "	|");
-	             }
+				 Ligue tempLigue = convertRowToLigue(myRs);
+	             liste.add(tempLigue);
 	         }
 			
 		}
@@ -63,6 +93,16 @@ public class LigueDAO {
 		 
 		return liste;
 		
+	}
+private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
+		
+		int idLig = myRs.getInt("IdLig");
+		String nomLig = myRs.getString("nomLig");
+		int idAdmin = myRs.getInt("IdAdmin");
+		
+		Ligue tempLigue = new Ligue(idLig,nomLig,idAdmin) ;
+		
+		return tempLigue;
 	}
 	
 	

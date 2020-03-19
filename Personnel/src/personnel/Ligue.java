@@ -20,14 +20,20 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	private String nom;
 	private SortedSet<Employe> employes;
 	private Employe administrateur;
+	private int idLig;
+	private int idAdmin;
 	
 	/**
 	 * Crée une ligue.
+	 * @param idLig 
 	 * @param nom le nom de la ligue.
+	 * @param idAdmin 
 	 */
 	
-	public Ligue(String nom)
+	public Ligue(int idLig, String nom, int idAdmin)
 	{
+		this.idLig = idLig;
+		this.idAdmin = idAdmin;
 		this.nom = nom;
 		employes = new TreeSet<>();
 		administrateur = GestionPersonnel.getGestionPersonnel().getRoot();

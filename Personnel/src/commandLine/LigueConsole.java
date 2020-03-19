@@ -56,7 +56,7 @@ public class LigueConsole
 
 	private Option ajouterLigue()
 	{
-		return new Option("Ajouter une ligue", "a", () -> {new Ligue (getString("nom : "));});
+		return new Option("Ajouter une ligue", "a", () -> {new Ligue (getInt("IdLig : "),getString("nom : "),getInt("IdAdmin"));});
 	}
 	
 	private Menu editerLigue(Ligue ligue)

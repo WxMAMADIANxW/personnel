@@ -20,7 +20,7 @@ class TestEmploye {
 
 	@Test
 	void testEstAdmin(){
-		Ligue ligue = new Ligue("La LDC");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
 		Admin.getLigue().setAdministrateur(Admin);
@@ -31,7 +31,7 @@ class TestEmploye {
 	@Test
 	void testEstRoot() {
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
-		Ligue ligue = new Ligue("La LDC");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe Root = gestionPersonnel.getRoot();
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		assertTrue(Root.estRoot());	
@@ -41,7 +41,7 @@ class TestEmploye {
 
 	@Test
 	void testSetNom() {
-		Ligue ligue = new Ligue("La LDC");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		String  nom = "Janothan";
 		employe.setNom(nom);
@@ -52,7 +52,7 @@ class TestEmploye {
 	
 	@Test
 	void testSetPrenom() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		String Eprenom = "Oussam" ;
 		employe.setPrenom(Eprenom);
@@ -63,7 +63,7 @@ class TestEmploye {
 
 	@Test
 	void testSetMail() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		String Email = "Oussam.Aouar@Ol.com";
 		employe.setMail(Email);
@@ -74,7 +74,7 @@ class TestEmploye {
 
 	@Test
 	void testSetPassword() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		String Emdp = "azerty" ;
 		employe.setPassword(Emdp);
@@ -83,7 +83,7 @@ class TestEmploye {
 
 	@Test
 	void testGetLigue() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		assertEquals(employe.getLigue(),ligue);
 		
@@ -91,7 +91,7 @@ class TestEmploye {
 
 	@Test
 	void testRemove() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		employe.remove();
 		assertFalse(ligue.getEmployes().contains(employe));
@@ -100,7 +100,7 @@ class TestEmploye {
 
 	@Test
 	void testCompareTo() {
-		Ligue ligue = new Ligue("Fl�chettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe john=  ligue.addEmploye("john","ney","mare","pass01",null);
 		Employe marie= ligue.addEmploye("marie","hey","mire","pass02",null);
 		assertTrue( john.compareTo(marie)<0);
@@ -110,14 +110,14 @@ class TestEmploye {
 
 	@Test
 	void testToString() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		assertTrue(employe.toString().contains("Houssem"));
 	}
 	
 	@Test
 	void testGetArrive() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
 		assertEquals(employe.getDateArrive(), dateArrive);
@@ -126,7 +126,7 @@ class TestEmploye {
 	
 	@Test
 	void testSetArrive() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass", dateArrive);
 		assertEquals(employe.getDateArrive(), dateArrive);
@@ -134,7 +134,7 @@ class TestEmploye {
 		
 	@Test
 	void testGetDepart() {
-		Ligue ligue = new Ligue("Fléchettes");
+		Ligue ligue = new Ligue(1,"La LDC",1);
 		LocalDate dateArrive = LocalDate.of(2020, 01, 01);
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",dateArrive);
 		LocalDate date = LocalDate.of(2020, 01, 21);

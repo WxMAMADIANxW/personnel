@@ -44,7 +44,7 @@ public class EmployeDAO{
 	    	
 	    	try {
 	    		myStmt = myConn.createStatement();
-	    		myRs = myStmt.executeQuery("SELECT nomEmp, preEmp, mail, dateArrive FROM employe");
+	    		myRs = myStmt.executeQuery("SELECT * FROM employe");
 	    		rsMeta = myRs.getMetaData();
 	    		
 	    		for(int i = 1; i <= rsMeta.getColumnCount(); i++)
