@@ -3,7 +3,7 @@ package bdd;
 
 import java.util.*;
 
-
+import com.luv2code.jdbc.employeesearch.core.Employee;
 
 import java.sql.*;
 import java.sql.Date;
@@ -43,8 +43,69 @@ public class connexionBdd implements Passerelle{
  		}
         
     }
+    
+    public List<Employe> chercheEmploye(String nom) throws Exception {
+		List<Employe> list = new ArrayList<>();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			nom += "%";
+			st = myConn.prepareStatement("select * from employe where nomEmp like ?");
+			
+			st.setString(1, nom);
+			
+			rs = st.executeQuery();
+			
+			while (rs.next()) {
+				Employe tempEmployee = convertRowToEmploye(rs);
+				list.add(tempEmployee);
+			}
+			
+			return list;
+		}
+		finally {
+			close(st, rs);
+		}
+	}
 
     
+    
+    public List<Employe> getEmploye() throws Exception {
+    	List<Employe> list = newArrayList();
+    	
+    	Statement st = null;
+    	ResultSet rs = null;
+    	
+    	try {
+    		st = myConn.createStatement();
+    		rs = st.executeQuery("SELECT nomEmp, preEmp, mail FROM employe");
+    		
+    		while (rs.next()) {
+    			Employe tempEmploye = convertRowToEmploye(rs);
+    			list.add(tempEmploye);
+    		}
+    	}
+    }
+    
+    private Employe convertRowToEmploye(ResultSet rs) throws SQLException {
+		
+		String nom = rs.getString("nomEmp");
+		String prenom = rs.getString("preEmp");
+		String mail = rs.getString("mail");
+		String password = rs.getString("password");
+		Date dateArrive = rs.getDate("dateArrive");
+		int ligue = rs.getInt("idLig");
+		
+		Employe tempEmploye = new Employe(ligue, nom, prenom, mail, password, dateArrive);
+		
+		return tempEmploye;
+	}
+    
+    private void close(Statement st, ResultSet rs) throws SQLException {
+		close(null, st, rs);		
+	}
 	@Override
 	public GestionPersonnel getGestionPersonnel() {
 		// TODO Auto-generated method stub
