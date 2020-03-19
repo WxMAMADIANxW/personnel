@@ -1,5 +1,7 @@
 package personnel;
 import java.io.Serializable;
+import java.sql.Date;
+
 import static commandLineMenus.rendering.examples.util.InOut.*;
 import java.time.LocalDate;
 
@@ -18,14 +20,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	private LocalDate dateArrive , dateDepart;
 	private Ligue ligue;
 	
-	Employe(Ligue ligue, String nom, String prenom, String mail, String password,LocalDate dateArrive)
+	Employe(String nom, String prenom, String mail,String password, LocalDate dateArrive,LocalDate dateDepart,Ligue ligueEmploye)
 	{
 		this.nom = nom;
 		this.prenom = prenom;
 		this.password = password;
 		this.mail = mail;
-		this.ligue = ligue;
 		this.dateArrive = dateArrive;
+		this.ligue = ligueEmploye;
 	}
 	
 	/**
