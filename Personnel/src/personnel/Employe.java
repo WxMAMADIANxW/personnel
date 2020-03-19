@@ -157,13 +157,20 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateDepart(LocalDate dateDepart)
 	{
-		if(dateDepart.isBefore(this.dateArrive)) {
-			System.out.println("ERREUR!!, \n la date de fin de contrat est avant la date de début de contrat");
-			dateDepart =LocalDate.of(getInt("Année: "), getInt("Mois: "), getInt("Jour: "));
+		boolean validate=false;	
+		
+		while(!validate) {
+			if(dateDepart.isBefore(this.dateArrive)) {
+				System.out.println("ERREUR!!, \n la date de fin de contrat est avant la date de début de contrat");
+				dateDepart =LocalDate.of(getInt("Année: "), getInt("Mois: "), getInt("Jour: "));
+			}
+			else {
+				validate = true;
+				this.dateDepart = dateDepart;
+				
+			}
 		}
-		else {
-			this.dateDepart = dateDepart;
-		}
+		
 		
 		
 	}
