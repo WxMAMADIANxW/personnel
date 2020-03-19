@@ -38,13 +38,13 @@ public class LigueDAO {
 			
 			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
 	         {
-	             System.out.println(" " + rsMeta.getColumnName(i).toUpperCase() + " ");
+	             System.out.println("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
 	         }
 			 while(myRs.next()) 
 	         {
 	             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
 	             {
-	                 System.out.println("         " + myRs.getObject(i).toString() + "    ");
+	                 System.out.println("" + myRs.getObject(i).toString() + "	|");
 	             }
 	         }
 			 myRs.close();
