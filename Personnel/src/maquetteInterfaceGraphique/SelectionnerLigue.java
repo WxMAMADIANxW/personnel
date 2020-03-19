@@ -7,11 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class afficherLesLigues extends JFrame {
+public class SelectionnerLigue extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -20,7 +22,7 @@ public class afficherLesLigues extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					afficherLesLigues frame = new afficherLesLigues();
+					SelectionnerLigue frame = new SelectionnerLigue();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +34,7 @@ public class afficherLesLigues extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public afficherLesLigues() {
+	public SelectionnerLigue() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -41,27 +43,29 @@ public class afficherLesLigues extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblListeDesLigues = new JLabel("Liste des ligues");
-		lblListeDesLigues.setBounds(170, 11, 75, 14);
+		lblListeDesLigues.setBounds(179, 11, 75, 14);
 		contentPane.add(lblListeDesLigues);
 		
+		JLabel lblRechercher = new JLabel("Rechercher");
+		lblRechercher.setBounds(56, 55, 55, 14);
+		contentPane.add(lblRechercher);
+		
+		textField = new JTextField("pet");
+		textField.setBounds(121, 52, 96, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblLaPetanque = new JLabel("la petanque");
+		lblLaPetanque.setBounds(56, 106, 58, 14);
+		contentPane.add(lblLaPetanque);
+		
+		JButton btnSelectionner = new JButton("selectionner");
+		btnSelectionner.setBounds(138, 102, 89, 23);
+		contentPane.add(btnSelectionner);
+		
 		JButton btnRetour = new JButton("Retour");
-		btnRetour.setBounds(323, 195, 89, 23);
+		btnRetour.setBounds(310, 205, 89, 23);
 		contentPane.add(btnRetour);
-		
-		JLabel lblLaPtanque = new JLabel("La pétanque");
-		lblLaPtanque.setBounds(35, 54, 60, 14);
-		contentPane.add(lblLaPtanque);
-		
-		JLabel lblLeGoupeDes = new JLabel("Le groupe des BG");
-		lblLeGoupeDes.setBounds(35, 79, 84, 14);
-		contentPane.add(lblLeGoupeDes);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(35, 117, 48, 14);
-		contentPane.add(label);
-		
-		JLabel label_1 = new JLabel("...");
-		label_1.setBounds(35, 104, 48, 14);
-		contentPane.add(label_1);
 	}
+
 }
