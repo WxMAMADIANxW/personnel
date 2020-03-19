@@ -7,7 +7,7 @@ import java.sql.*;
 import personnel.Ligue;
 
 public class LigueDAO {
-	private Connection conn;
+	private Connection myConn;
 	
 	
 	public LigueDAO() throws Exception{
@@ -19,7 +19,7 @@ public class LigueDAO {
 		String dburl = props.getProperty("dburl");;
 		
 		// connect to database
-        conn = DriverManager.getConnection(dburl, user, password);
+        myConn = DriverManager.getConnection(dburl, user, password);
 		
 		System.out.println("DB connection successful to: " + dburl);	
 	}
@@ -32,7 +32,7 @@ public class LigueDAO {
 		ResultSetMetaData rsMeta = null;
 		
 		try {
-			myStmt = conn.createStatement();
+			myStmt = myConn.createStatement();
 			myRs = myStmt.executeQuery("select * from ligue");
 			rsMeta = myRs.getMetaData();
 			
@@ -57,7 +57,7 @@ public class LigueDAO {
             System.exit(0);
 		}
 		finally {
-			close(conn,myStmt, myRs);
+			close(myStmt, myRs);
 		}
 		
 		 
@@ -65,7 +65,7 @@ public class LigueDAO {
 		
 	}
 	
-	private static void close(Connection conn, Statement myStmt, ResultSet myRs)
+	private static void close( Statement myStmt, ResultSet myRs)
 			throws SQLException {
 
 		if (myRs != null) {
@@ -75,15 +75,11 @@ public class LigueDAO {
 		if (myStmt != null) {
 			
 		}
-		
-		if (conn != null) {
-			conn.close();
-		}
 	}
-
+	
 	public static void main(String[] args) throws Exception {
 			LigueDAO dao = new LigueDAO();
 			System.out.println(dao.getLigues());
 	}
-
+	
 }
