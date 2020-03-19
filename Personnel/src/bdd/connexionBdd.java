@@ -87,6 +87,7 @@ public class connexionBdd implements Passerelle{
     			Employe tempEmploye = convertRowToEmploye(rs);
     			list.add(tempEmploye);
     		}
+    		return list;
     	}
     	finally {
     		st.close();
@@ -101,9 +102,9 @@ public class connexionBdd implements Passerelle{
 		String mail = rs.getString("mail");
 		String password = rs.getString("password");
 		Date dateArrive = rs.getDate("dateArrive");
-		int ligue = rs.getInt("idLig");
+		Ligue ligue = rs.getLigue()
 		
-		Employe tempEmploye = new Employe(ligue, nom, prenom, mail, password, dateArrive,null);
+		Employe tempEmploye = new Employe( nom, prenom, mail, password, dateArrive,null,ligue);
 		
 		return tempEmploye;
 	}
