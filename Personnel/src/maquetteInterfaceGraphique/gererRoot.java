@@ -46,28 +46,8 @@ public class gererRoot extends JFrame {
 		lblGererLeCompte.setBounds(155, 0, 104, 14);
 		contentPane.add(lblGererLeCompte);
 		
-		JButton btnAfficherLemploye = new JButton("Afficher l'employe");
-		btnAfficherLemploye.setBounds(27, 80, 153, 23);
-		contentPane.add(btnAfficherLemploye);
-		
-		JButton btnChangerLeNom = new JButton("Changer le nom");
-		btnChangerLeNom.setBounds(215, 80, 153, 23);
-		contentPane.add(btnChangerLeNom);
-		
-		JButton btnChangerLePrenom = new JButton("Changer le prenom");
-		btnChangerLePrenom.setBounds(27, 114, 153, 23);
-		contentPane.add(btnChangerLePrenom);
-		
-		JButton btnChangerLe = new JButton("Changer le mail");
-		btnChangerLe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnChangerLe.setBounds(215, 114, 153, 23);
-		contentPane.add(btnChangerLe);
-		
 		JButton btnChangerLeMot = new JButton("Changer le mot de passe");
-		btnChangerLeMot.setBounds(27, 148, 153, 23);
+		btnChangerLeMot.setBounds(27, 114, 153, 23);
 		contentPane.add(btnChangerLeMot);
 		
 		JButton btnQuitter = new JButton("Retour");
@@ -75,8 +55,12 @@ public class gererRoot extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnQuitter.setBounds(311, 209, 89, 23);
+		btnQuitter.setBounds(319, 213, 89, 23);
 		contentPane.add(btnQuitter);
+		
+		JButton btnInformationsRoot = new JButton("Informations Root");
+		btnInformationsRoot.setBounds(27, 80, 153, 23);
+		contentPane.add(btnInformationsRoot);
 	}
 
 }
