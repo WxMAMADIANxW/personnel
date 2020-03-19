@@ -23,17 +23,17 @@ public class getEmploye {
 			
 			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
 			{
-				System.out.println(" " + rsMeta.getColumnName(i).toUpperCase() + " ");
+				System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
 			}
 			
-			//System.out.println("\n*************************************************************");
+			System.out.println("");
 				
 				while(rs.next()) 
 				{
 					for (int i = 1; i <= rsMeta.getColumnCount(); i++)
 					{
-						System.out.println("         " + rs.getObject(i).toString() + "    ");
-						System.out.println("\n-------------------------------------------------------------");
+						System.out.print("" + rs.getObject(i).toString() + "	|");
+						//System.out.println("\n-------------------------------------------------------------");
 					}
 				}
 				rs.close();
