@@ -72,5 +72,5 @@ public class ajouterUneLigue extends JFrame {
 		textField_1.setBounds(171, 112, 96, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-	}
+	} 
 }
