@@ -12,7 +12,7 @@ public class LigueDAO {
 	
 	public void EmployeeDAO() throws Exception{
 		Properties props = new Properties();
-		props.load(new FileInputStream("infoBdd.properties"));
+		props.load(new FileInputStream("demo.properties"));
 		
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");;
