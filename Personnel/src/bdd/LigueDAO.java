@@ -65,6 +65,8 @@ public class LigueDAO {
 		
 	}
 	
+	
+	
 	private static void close( Statement myStmt, ResultSet myRs)
 			throws SQLException {
 
