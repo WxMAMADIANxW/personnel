@@ -101,10 +101,10 @@ public class connexionBdd implements Passerelle{
 		String prenom = rs.getString("preEmp");
 		String mail = rs.getString("mail");
 		String password = rs.getString("password");
-		Date dateArrive = rs.getDate("dateArrive");
-		Ligue ligue = rs.getLigue()
+		LocalDate dateArrive = ((Employe) rs).getDateArrive();
+		Ligue ligue = new Ligue("");
 		
-		Employe tempEmploye = new Employe( nom, prenom, mail, password, dateArrive,null,ligue);
+		Employe tempEmploye = ligue.addEmploye( nom, prenom, mail, password, dateArrive);
 		
 		return tempEmploye;
 	}
