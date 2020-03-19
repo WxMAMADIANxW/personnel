@@ -110,7 +110,7 @@ public class connexionBdd implements Passerelle{
 	}
     
     private void close(Statement st, ResultSet rs) throws SQLException {
-		close(null, st, rs);		
+		close(st, rs);		
 	}
 	@Override
 	public GestionPersonnel getGestionPersonnel() {
