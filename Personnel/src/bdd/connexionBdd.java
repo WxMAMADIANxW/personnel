@@ -4,7 +4,11 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class connexionBdd {
+import personnel.GestionPersonnel;
+import personnel.Passerelle;
+import personnel.SauvegardeImpossible;
+
+public class connexionBdd implements Passerelle{
     
     public static void main(String[] args) {
     	String BDD = "personnel";
@@ -29,5 +33,17 @@ public class connexionBdd {
             }
         });
     }
+
+	@Override
+	public GestionPersonnel getGestionPersonnel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel) throws SauvegardeImpossible {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
