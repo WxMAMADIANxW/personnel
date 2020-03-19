@@ -14,9 +14,10 @@ public class connexionBdd {
         String password = "";
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-      
+            	Connection conn = null;
+            	
                 try {
-                	Connection conn = DriverManager.getConnection(url, user, password);
+                	conn = DriverManager.getConnection(url, user, password);
                 	System.out.println("T'es co bg");
                 }
                 catch (Exception e)
