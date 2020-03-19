@@ -1,5 +1,6 @@
 package personnel;
 import java.io.Serializable;
+import static commandLineMenus.rendering.examples.util.InOut.*;
 import java.time.LocalDate;
 
 /**
@@ -157,7 +158,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setDateDepart(LocalDate dateDepart)
 	{
 		if(dateDepart.isBefore(this.dateArrive)) {
-			throw new RuntimeException();
+			System.out.println("ERREUR!!, \n la date de fin de contrat est avant la date de début de contrat");
+			dateDepart =LocalDate.of(getInt("Année: "), getInt("Mois: "), getInt("Jour: "));
 		}
 		else {
 			this.dateDepart = dateDepart;
