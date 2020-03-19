@@ -1,6 +1,6 @@
 package bdd;
 
-import java.awt.EventQueue;
+
 import java.util.*;
 
 
@@ -24,24 +24,27 @@ public class connexionBdd implements Passerelle{
     	
     	myConn = null;
     	
-    		
-    	 Properties props = new Properties();
-         props.load(new FileInputStream("demo.properties"));
-         
-         String user = props.getProperty("user");
-         String password = props.getProperty("password");
-         String dburl = props.getProperty("dburl");
-         
-         myConn = DriverManager.getConnection(dburl, user, password);
-         
-         System.out.println("Connecté à la BDD");
-        
-    	
+    	try {
+    		Properties props = new Properties();
+            props.load(new FileInputStream("demo.properties"));
+            
+            String user = props.getProperty("user");
+            String password = props.getProperty("password");
+            String dburl = props.getProperty("dburl");
+            
+            myConn = DriverManager.getConnection(dburl, user, password);
+            
+            System.out.println("Connecté à la BDD");	
+    	}
+    	 
+         catch(SQLException e)
+ 		{
+ 			System.out.println(e);
+ 		}
         
     }
 
     
-   
 	@Override
 	public GestionPersonnel getGestionPersonnel() {
 		// TODO Auto-generated method stub
