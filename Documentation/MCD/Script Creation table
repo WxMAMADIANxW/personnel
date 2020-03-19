@@ -27,5 +27,5 @@ ALTER TABLE employe
 ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
 
 ALTER TABLE ligue
-ADD FOREIGN KEY (IdEmp) REFERENCES employe(IdEmp);
+ADD FOREIGN KEY (IdAdmin) REFERENCES employe(IdEmp);
 
