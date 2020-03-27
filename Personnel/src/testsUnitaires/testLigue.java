@@ -2,41 +2,48 @@ package testsUnitaires;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import personnel.*;
 
+
 class testLigue 
 {
+	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
+	
 	@Test
-	void testCreateLigue() 
+	void createLigue() throws SauvegardeImpossible
 	{	
-		Ligue ligue = new Ligue(1,"La LDC",1);
-		assertEquals("Fl�chettes", ligue.getNom());
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
+		assertEquals("Bowling", ligue.getNom());
 	}
+	
 
 	@Test
-	void testAddEmploye() 
+	void addEmploye() throws SauvegardeImpossible
 	{
-		Ligue ligue = new Ligue(1,"La LDC",1);
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Bouchard", "G�rard", "g.bouchard@gmail.com", "azerty",null); 
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe.getLigue(),ligue);
 	}
+	
+	
 	@Test
-	void testSetNom()
+	void testSetNom() throws SauvegardeImpossible
 	{
-		Ligue ligue =new Ligue(1,"La LDC",1);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
 		String nom = "Aouar";
 		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(employe.getNom().contains(nom));
 	}
+	
+	
 	@Test
-	void  testGetAdministrateur()
+	void  testGetAdministrateur() throws SauvegardeImpossible
 	{
-		Ligue ligue = new Ligue(1,"La LDC",1);
-		Ligue autreLigue = new Ligue(2,"Harpon",2);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue autreLigue = gestionPersonnel.addLigue(2,"Liga");
 		Employe employe1 = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "azerty",null);
 		Employe employe2 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null);
 		ligue.setAdministrateur(employe1);
@@ -44,40 +51,44 @@ class testLigue
 		ligue.setAdministrateur(employe2);
 		assertNotEquals(employe1, ligue.getAdministrateur());
 		assertEquals(employe2, ligue.getAdministrateur());
-		
-	}
+		}
+	
+	
 	@Test
-	void testRemove()
+	void testRemove() throws SauvegardeImpossible
 	{
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
-		Ligue ligue =new Ligue(1,"La LDC",1);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
 		gestionPersonnel.getLigues().add(ligue);
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 		ligue.remove();
 		assertFalse(gestionPersonnel.getLigues().contains(ligue));
 	}
 	
+	
 	@Test
-	void testCompareTo()
+	void testCompareTo() throws SauvegardeImpossible
 	{
-		Ligue ligue = new Ligue(1,"La LDC",1);
-		Ligue ligue2 = new Ligue(3,"Fortnite",3);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue2 = gestionPersonnel.addLigue(2,"Liga");
 		ligue.getNom().compareTo(ligue2.getNom());
 		assertNotEquals(ligue.getNom(), ligue2.getNom());
 	}
 	
+	
 	@Test
-	void testToString()
+	void testToString() throws SauvegardeImpossible
 	{
-		Ligue ligue =new Ligue(1,"La LDC",1);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
 		String nom = "Fortnite";
 		ligue.setNom(nom);
-		assertTrue(ligue.toString().contains("Fortnite"));
+		assertTrue(ligue.toString().contains("Bowling"));
 	}
 	
-	void testGetEmployes()
+	
+	void testGetEmployes() throws SauvegardeImpossible
 	{
-		Ligue ligue = new Ligue(1,"La LDC",1);
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(ligue.getEmployes().contains(employe));
 	}
