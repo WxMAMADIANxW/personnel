@@ -70,7 +70,7 @@ public class LigueDAO {
 			
 			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
 	         {
-	             System.out.print("|" + rsMeta.getColumnName(i).toUpperCase() + "");
+	             System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + " |");
 	         }
 			
 			System.out.println();
@@ -121,7 +121,7 @@ private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
 		}
 
 		if (myStmt != null) {
-			
+			myStmt.close();
 		}
 	}
 	

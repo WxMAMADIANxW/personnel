@@ -18,7 +18,7 @@ import personnel.SauvegardeImpossible;
 
 
 public class EmployeDAO{
-	private Connection myConn ;
+	private Connection myConn;
 	
 	public EmployeDAO() throws Exception{
 		Properties props = new Properties();
@@ -99,12 +99,12 @@ public class EmployeDAO{
 		}
 
 		if (myStmt != null) {
-			
+			myStmt.close();
 		}
 	}
     
     public static void main(String[] args) throws Exception{
-    	EmployeDAO dao = new EmployeDAO();
+		EmployeDAO dao = new EmployeDAO();
     	System.out.println(dao.getEmploye());
     	dao.setEmploye();
     	System.out.println(dao.getEmploye());
