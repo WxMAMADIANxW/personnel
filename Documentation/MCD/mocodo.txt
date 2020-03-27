@@ -1,7 +1,5 @@
 EMPLOYE: IdEmp , nomEmp , preEmp , mail,  password, droitRoot, dateArrivee, dateDepart
-
-
 APPARTENIR, 1N LIGUE, 01 EMPLOYE
-ADMINSITRER, 01 EMPLOYE, 01 LIGUE
 
+ADMINISTRER, 01 EMPLOYE, 01 LIGUE
 LIGUE: IdLig , nomLig
