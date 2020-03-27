@@ -138,6 +138,6 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	@Override
 	public String toString()
 	{
-		return nom;
+		return idLig+"|"+idAdmin+"	|"+nom+"\n";
 	}
 }
