@@ -7,12 +7,13 @@ public class Credentials {
 			host = "localhost", 
 			port ="8889",
 			database ="personnel",
+			timeZone ="serverTimezone=UTC",
 			user = "root",
 			password = "root";
 
 	static String getUrl() 
 	{
-		return "jdbc:" + driver + "://" + host + ":" + port + "/" + database;
+		return "jdbc:" + driver + "://" + host + ":" + port + "/" + database + "?" + timeZone;
 	}
 
 	static String getDriverClassName()

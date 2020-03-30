@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import bdd.EmployeDAO;
 import personnel.*;
+
 
 public class JDBC implements Passerelle {
 
@@ -98,10 +98,6 @@ public class JDBC implements Passerelle {
 		}
 		
 		
-		public static void main(String[] args) throws Exception{
-			JDBC jdbc = new JDBC();
-
-
-		    }
+		
 	}
 
