@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import bdd.EmployeDAO;
 import personnel.*;
 
 public class JDBC implements Passerelle {
@@ -17,7 +19,10 @@ public class JDBC implements Passerelle {
 			try
 			{
 				Class.forName(Credentials.getDriverClassName());
-				connection = DriverManager.getConnection(Credentials.getUrl(), Credentials.getUser(), Credentials.getPassword());
+				connection = DriverManager.getConnection(Credentials.getUrl(), Credentials.getUser(), Credentials.getPassword()); 
+				
+		        System.out.println("Vous êtes bien connecté à la BDD");
+
 			}
 			catch (ClassNotFoundException e)
 			{
@@ -28,6 +33,7 @@ public class JDBC implements Passerelle {
 				System.out.println(e);
 			}
 		}
+		
 
 		@Override
 		public GestionPersonnel getGestionPersonnel() 
@@ -47,6 +53,7 @@ public class JDBC implements Passerelle {
 			}
 			return gestionPersonnel;
 		}
+		
 
 		@Override
 		public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel) throws SauvegardeImpossible 
@@ -54,6 +61,7 @@ public class JDBC implements Passerelle {
 			close();
 		}
 
+		
 		public void close() throws SauvegardeImpossible
 		{
 			try
@@ -67,6 +75,7 @@ public class JDBC implements Passerelle {
 			}
 		}
 
+		
 		@Override
 		public int insert(Ligue ligue) throws SauvegardeImpossible 
 		{
@@ -79,6 +88,7 @@ public class JDBC implements Passerelle {
 				ResultSet id = instruction.getGeneratedKeys();
 				id.next();
 				return id.getInt(1);
+				
 			} 
 			catch (SQLException exception) 
 			{
@@ -86,5 +96,12 @@ public class JDBC implements Passerelle {
 				throw new SauvegardeImpossible(exception);
 			}		
 		}
+		
+		
+		public static void main(String[] args) throws Exception{
+			JDBC jdbc = new JDBC();
+
+
+		    }
 	}
 

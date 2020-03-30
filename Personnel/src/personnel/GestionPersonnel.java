@@ -42,6 +42,7 @@ public class GestionPersonnel implements Serializable
 		}
 		return gestionPersonnel;
 	}
+	
 
 	public GestionPersonnel()
 	{
@@ -50,10 +51,12 @@ public class GestionPersonnel implements Serializable
 		ligues = new TreeSet<>();
 	}
 	
+	
 	public void sauvegarder() throws SauvegardeImpossible
 	{
 		passerelle.sauvegarderGestionPersonnel(this);
 	}
+	
 	
 	/**
 	 * Retourne la ligue dont administrateur est l'administrateur,
@@ -69,16 +72,17 @@ public class GestionPersonnel implements Serializable
 		else
 			return null;
 	}
+	
 
 	/**
 	 * Retourne toutes les ligues enregistrées.
 	 * @return toutes les ligues enregistrées.
-	 */
-	
+	 */	
 	public SortedSet<Ligue> getLigues()
 	{
 		return Collections.unmodifiableSortedSet(ligues);
 	}
+	
 
 	public Ligue addLigue(String nom) throws SauvegardeImpossible
 	{
@@ -86,6 +90,7 @@ public class GestionPersonnel implements Serializable
 		ligues.add(ligue);
 		return ligue;
 	}
+	
 
 	public Ligue addLigue(int id, String nom)
 	{
@@ -93,13 +98,12 @@ public class GestionPersonnel implements Serializable
 		ligues.add(ligue);
 		return ligue;
 	}
+	
 
 	/**
 	 * Supprime une ligue de la liste ligues.
 	 * @param ligue
 	 */
-	
-
 	void remove(Ligue ligue)
 	{
 		ligues.remove(ligue);

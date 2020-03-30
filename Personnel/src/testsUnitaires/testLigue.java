@@ -1,7 +1,7 @@
 package testsUnitaires;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import personnel.*;
@@ -14,15 +14,15 @@ class testLigue
 	@Test
 	void createLigue() throws SauvegardeImpossible
 	{	
-		Ligue ligue = gestionPersonnel.addLigue("Bowling");
-		assertEquals("Bowling", ligue.getNom());
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
 	}
 	
 
 	@Test
 	void addEmploye() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue("Bowling");
+		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
 		Employe employe = ligue.addEmploye("Bouchard", "G�rard", "g.bouchard@gmail.com", "azerty",null); 
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe.getLigue(),ligue);
