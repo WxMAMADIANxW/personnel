@@ -20,7 +20,7 @@ class TestEmploye {
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 
 	@Test
-	void testEstAdmin() throws SauvegardeImpossible{
+	void testEstAdmin() throws SauvegardeImpossible {
 		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe Admin= ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
 		Employe employe= ligue.addEmploye("Lambda", "employe", "mail", "azerty", null);
