@@ -22,7 +22,7 @@ class testLigue
 	@Test
 	void addEmploye() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Bouchard", "G�rard", "g.bouchard@gmail.com", "azerty",null); 
 		assertEquals(employe, ligue.getEmployes().first());
 		assertEquals(employe.getLigue(),ligue);
@@ -32,7 +32,7 @@ class testLigue
 	@Test
 	void testSetNom() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		String nom = "Aouar";
 		Employe employe = ligue.addEmploye(nom, "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(employe.getNom().contains(nom));
@@ -42,7 +42,7 @@ class testLigue
 	@Test
 	void  testGetAdministrateur() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Ligue autreLigue = gestionPersonnel.addLigue(2,"Liga");
 		Employe employe1 = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "azerty",null);
 		Employe employe2 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null);
@@ -58,7 +58,7 @@ class testLigue
 	void testRemove() throws SauvegardeImpossible
 	{
 		GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		gestionPersonnel.getLigues().add(ligue);
 		assertTrue(gestionPersonnel.getLigues().contains(ligue));
 		ligue.remove();
@@ -69,8 +69,8 @@ class testLigue
 	@Test
 	void testCompareTo() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
-		Ligue ligue2 = gestionPersonnel.addLigue(2,"Liga");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
+		Ligue ligue2 = gestionPersonnel.addLigue("Liga");
 		ligue.getNom().compareTo(ligue2.getNom());
 		assertNotEquals(ligue.getNom(), ligue2.getNom());
 	}
