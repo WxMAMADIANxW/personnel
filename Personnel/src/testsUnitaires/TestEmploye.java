@@ -45,9 +45,9 @@ class TestEmploye {
 	void testSetNom() throws SauvegardeImpossible {
 		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-		String  nom = "Janothan";
-		employe.setNom(nom);
-		assertEquals(employe.getNom(),nom);
+		String  nomEmp = "Janothan";
+		employe.setNom(nomEmp);
+		assertEquals(employe.getNom(),nomEmp);
 	}
 
 	
@@ -56,9 +56,9 @@ class TestEmploye {
 	void testSetPrenom() throws SauvegardeImpossible {
 		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-		String Eprenom = "Oussam" ;
-		employe.setPrenom(Eprenom);
-		assertEquals(employe.getPrenom(),Eprenom);
+		String nomEmp = "Oussam" ;
+		employe.setPrenom(nomEmp);
+		assertEquals(employe.getPrenom(),nomEmp);
 	}
 
 	
@@ -67,9 +67,9 @@ class TestEmploye {
 	void testSetMail() throws SauvegardeImpossible {
 		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "pass",null);
-		String Email = "Oussam.Aouar@Ol.com";
-		employe.setMail(Email);
-		assertEquals(employe.getMail(),Email);
+		String mail = "Oussam.Aouar@Ol.com";
+		employe.setMail(mail);
+		assertEquals(employe.getMail(),mail);
 	}
 
 	

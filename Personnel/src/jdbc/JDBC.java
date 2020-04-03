@@ -82,7 +82,7 @@ public class JDBC implements Passerelle {
 			try 
 			{
 				PreparedStatement instruction;
-				instruction = connection.prepareStatement("insert into ligue (nom) values(?)", Statement.RETURN_GENERATED_KEYS);
+				instruction = connection.prepareStatement("insert into ligue (nomLig) values(?)", Statement.RETURN_GENERATED_KEYS);
 				instruction.setString(1, ligue.getNom());		
 				instruction.executeUpdate();
 				ResultSet id = instruction.getGeneratedKeys();
