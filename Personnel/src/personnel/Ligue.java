@@ -22,8 +22,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	private SortedSet<Employe> employes;
 	private Employe administrateur;
 	private GestionPersonnel gestionPersonnel;
-	private int idLig;
-	private int idAdmin;
+	
 	
 	/**
 	 * Crée une ligue.
@@ -41,8 +40,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	
 	Ligue(GestionPersonnel gestionPersonnel, int id, String nom)
 	{
-		this.idLig = idLig;
-		this.idAdmin = idAdmin;
+		
 		this.nom = nom;
 		employes = new TreeSet<>();
 		this.gestionPersonnel = gestionPersonnel;
