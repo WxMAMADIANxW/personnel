@@ -1,4 +1,4 @@
-package bdd;
+package jdbc;
 
 import java.util.*; 
 import java.io.*;
@@ -12,18 +12,24 @@ public class LigueDAO {
 	
 	
 	public LigueDAO() throws Exception{
-		Properties props = new Properties();
-		props.load(new FileInputStream("demo.properties"));
-		
-		String user = props.getProperty("user");
-		String password = props.getProperty("password");;
-		String dburl = props.getProperty("dburl");;
-		
-		// connect to database
-        myConn = DriverManager.getConnection(dburl, user, password);
-		
-		System.out.println("DB connection successful to: " + dburl);	
+		try
+		{
+			Class.forName(Credentials.getDriverClassName());
+			myConn = DriverManager.getConnection(Credentials.getUrl(), Credentials.getUser(), Credentials.getPassword()); 
+			
+	        System.out.println("Vous êtes bien connecté à la BDD");
+
+		}
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Pilote JDBC non installé.");
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		}
 	}
+
 	
 //	public Employe addEmploye(String nom, String prenom, String mail, String password,LocalDate dateArrive) throws Exception{
 //		Employe employe = new Employe( nom, prenom, mail, password, dateArrive);

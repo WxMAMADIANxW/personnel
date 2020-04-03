@@ -1,9 +1,9 @@
-package bdd;
+package jdbc;
 
 
 import java.util.*;
 
-
+import jdbc.Credentials;
 
 import java.sql.*;
 import java.sql.Date;
@@ -21,19 +21,24 @@ public class EmployeDAO{
 	private Connection myConn;
 	
 	public EmployeDAO() throws Exception{
-		Properties props = new Properties();
-        props.load(new FileInputStream("demo.properties"));
-        
-        String user = props.getProperty("user");
-        String password = props.getProperty("password");
-        String dburl = props.getProperty("dburl");
-        
-        // Connexion à la base de données.
-        
-        myConn = DriverManager.getConnection(dburl, user, password);
-        
-        System.out.println("Connecté à la BDD");
-	}
+			
+			try
+			{
+				Class.forName(Credentials.getDriverClassName());
+				myConn = DriverManager.getConnection(Credentials.getUrl(), Credentials.getUser(), Credentials.getPassword()); 
+				
+		        System.out.println("Vous êtes bien connecté à la BDD");
+
+			}
+			catch (ClassNotFoundException e)
+			{
+				System.out.println("Pilote JDBC non installé.");
+			}
+			catch (SQLException e)
+			{
+				System.out.println(e);
+			}
+		}
 	
 	 public List<Employe> getEmploye() throws Exception {
 	    	List<Employe> liste = new ArrayList<Employe>();
@@ -81,7 +86,7 @@ public class EmployeDAO{
 		 
 		 myStmt = myConn.createStatement();
 		 nb = myStmt.executeUpdate("INSERT INTO employe"
-		 		+ " VALUES ('5', '1', 'Lopes', 'Anthony', 'aLopes@ol.com', 'lopes' , '0' , '2020-03-17', null)");
+		 		+ " VALUES ('10', '1', 'Lopes', 'Anthony', 'aLopes@ol.com', 'lopes' , '0' , '2020-03-17', null)");
 		 
 		 System.out.println("nb lignes modifs : " +nb);
 		 
