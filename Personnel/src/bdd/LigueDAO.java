@@ -1,10 +1,11 @@
 package bdd;
 
-import java.util.*;
+import java.util.*; 
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import personnel.*;
+
 
 public class LigueDAO {
 	private Connection myConn;
@@ -103,7 +104,7 @@ private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
 		int idLig = myRs.getInt("IdLig");
 		String nomLig = myRs.getString("nomLig");
 		
-		Ligue tempLigue = GestionPersonnel.addLigue(idLig, nomLig);		
+		Ligue tempLigue =  GestionPersonnel.getGestionPersonnel().addLigue(idLig,nomLig);	
 		return tempLigue;
 	}
 	

@@ -1,4 +1,4 @@
-package jdbc;
+package bdd;
 
 public class CredentialsExemple {
 

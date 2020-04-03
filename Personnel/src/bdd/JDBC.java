@@ -1,4 +1,4 @@
-package jdbc;
+package bdd;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -6,20 +6,30 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import personnel.*;
-
-
+import java.io.*;
+import java.sql.*;
+import java.time.LocalDate;
+import personnel.*;
+import java.util.*; 
 public class JDBC implements Passerelle {
 
-		Connection connection;
-
-		public JDBC()
+		private Connection myConn;
+	
+		public JDBC() throws FileNotFoundException, IOException
 		{
+			Properties props = new Properties();
+			props.load(new FileInputStream("demo.properties"));
+			String user = props.getProperty("user");
+			String password = props.getProperty("password");;
+			String dburl = props.getProperty("dburl");;
+			String driverClassName = props.getProperty("driverClassName");
 			try
 			{
-				Class.forName(Credentials.getDriverClassName());
-				connection = DriverManager.getConnection(Credentials.getUrl(), Credentials.getUser(), Credentials.getPassword()); 
+				Class.forName(driverClassName);
+				myConn= DriverManager.getConnection( dburl, user, password); 
 				
 		        System.out.println("Vous êtes bien connecté à la BDD");
 
@@ -42,7 +52,7 @@ public class JDBC implements Passerelle {
 			try 
 			{
 				String requete = "select * from ligue";
-				Statement instruction = connection.createStatement();
+				Statement instruction = myConn.createStatement();
 				ResultSet ligues = instruction.executeQuery(requete);
 				while (ligues.next())
 					gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
@@ -66,8 +76,8 @@ public class JDBC implements Passerelle {
 		{
 			try
 			{
-				if (connection != null)
-					connection.close();
+				if (myConn != null)
+					myConn.close();
 			}
 			catch (SQLException e)
 			{
@@ -82,7 +92,7 @@ public class JDBC implements Passerelle {
 			try 
 			{
 				PreparedStatement instruction;
-				instruction = connection.prepareStatement("insert into ligue (nomLig) values(?)", Statement.RETURN_GENERATED_KEYS);
+				instruction = myConn.prepareStatement("insert into ligue (nomLig) values(?)", Statement.RETURN_GENERATED_KEYS);
 				instruction.setString(1, ligue.getNom());		
 				instruction.executeUpdate();
 				ResultSet id = instruction.getGeneratedKeys();
