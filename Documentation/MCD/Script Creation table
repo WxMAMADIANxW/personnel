@@ -5,7 +5,7 @@ USE personnel;
 
 CREATE TABLE employe
 (
-    Idemp INT PRIMARY KEY,
+    Idemp INT AUTO_INCREMENT PRIMARY KEY,
     IdLig INT,
     nomEmp VARCHAR(50) NOT NULL,
     preEmp VARCHAR(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE employe
 
 CREATE TABLE ligue
 (
-    IdLig INT PRIMARY KEY,
+    IdLig INT AUTO_INCREMENT PRIMARY KEY,
     IdAdmin INT,
     nomLig VARCHAR(50) NOT NULL
  );
