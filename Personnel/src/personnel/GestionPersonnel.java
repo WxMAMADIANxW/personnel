@@ -1,6 +1,6 @@
 package personnel;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -23,7 +23,7 @@ public class GestionPersonnel implements Serializable
 	private Employe root = new Employe(this, null, "root", "", "", "toor", null);
 	public final static int SERIALIZATION = 1, JDBC = 2, 
 			TYPE_PASSERELLE = JDBC;  
-	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new jdbc.JDBC() : new serialisation.Serialization();	
+	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new bdd.JDBC() : new serialisation.Serialization();	
 
 	
 	/**
@@ -91,7 +91,7 @@ public class GestionPersonnel implements Serializable
 		return ligue;
 	}
 	
-
+	
 	public Ligue addLigue(int id, String nom)
 	{
 		Ligue ligue = new Ligue(this, id, nom);

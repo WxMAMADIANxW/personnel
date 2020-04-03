@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+import javax.imageio.IIOException;
+
 import personnel.*;
 import java.io.*;
 import java.sql.*;
@@ -18,10 +20,18 @@ public class JDBC implements Passerelle {
 
 		private Connection myConn;
 	
-		public JDBC() throws FileNotFoundException, IOException
+		public JDBC() 
 		{
 			Properties props = new Properties();
-			props.load(new FileInputStream("demo.properties"));
+			try {
+				props.load(new FileInputStream("demo.properties"));
+			} catch (FileNotFoundException e1) {
+				
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				
+				e1.printStackTrace();
+			}
 			String user = props.getProperty("user");
 			String password = props.getProperty("password");;
 			String dburl = props.getProperty("dburl");;
