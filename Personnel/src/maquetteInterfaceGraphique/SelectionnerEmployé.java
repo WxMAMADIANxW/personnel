@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class SelectionnerEmployé extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtGer;
 	private JButton btnRetour;
 	private JLabel lblListeDesEmploys;
 
@@ -50,10 +50,11 @@ public class SelectionnerEmployé extends JFrame {
 		lblRechercher.setBounds(65, 64, 55, 14);
 		contentPane.add(lblRechercher);
 		
-		textField = new JTextField();
-		textField.setBounds(123, 61, 96, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtGer = new JTextField();
+		txtGer.setText("ger");
+		txtGer.setBounds(123, 61, 96, 20);
+		contentPane.add(txtGer);
+		txtGer.setColumns(10);
 		
 		JLabel lblDupondGerard = new JLabel("DUPOND Gerard");
 		lblDupondGerard.setBounds(36, 113, 78, 14);

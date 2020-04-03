@@ -1,6 +1,6 @@
 package personnel;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -20,8 +20,11 @@ public class GestionPersonnel implements Serializable
 	private static final long serialVersionUID = -105283113987886425L;
 	private static GestionPersonnel gestionPersonnel = null;
 	private SortedSet<Ligue> ligues;
-	private Employe root = new Employe( "root", "", "", "toor",null);
-	private static Passerelle passerelle = new serialisation.Serialization();
+	private Employe root = new Employe(this, null, "root", "", "", "toor", null);
+	public final static int SERIALIZATION = 1, JDBC = 2, 
+			TYPE_PASSERELLE = JDBC;  
+	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new bdd.JDBC() : new serialisation.Serialization();	
+
 	
 	/**
 	 * Retourne l'unique instance de cette classe.
@@ -39,16 +42,21 @@ public class GestionPersonnel implements Serializable
 		}
 		return gestionPersonnel;
 	}
+	
 
-	private GestionPersonnel()
+	public GestionPersonnel()
 	{
+		if (gestionPersonnel != null)
+			throw new RuntimeException("Vous ne pouvez créer qu'une seuls instance de cet objet.");
 		ligues = new TreeSet<>();
 	}
+	
 	
 	public void sauvegarder() throws SauvegardeImpossible
 	{
 		passerelle.sauvegarderGestionPersonnel(this);
 	}
+	
 	
 	/**
 	 * Retourne la ligue dont administrateur est l'administrateur,
@@ -64,32 +72,50 @@ public class GestionPersonnel implements Serializable
 		else
 			return null;
 	}
+	
 
 	/**
 	 * Retourne toutes les ligues enregistrées.
 	 * @return toutes les ligues enregistrées.
-	 */
-	
+	 */	
 	public SortedSet<Ligue> getLigues()
 	{
 		return Collections.unmodifiableSortedSet(ligues);
 	}
+	
 
-	void add(Ligue ligue)
+	public Ligue addLigue(String nom) throws SauvegardeImpossible
 	{
+		Ligue ligue = new Ligue(this, nom); 
 		ligues.add(ligue);
+		return ligue;
 	}
+	
+	
+	public Ligue addLigue(int id, String nom)
+	{
+		Ligue ligue = new Ligue(this, id, nom);
+		ligues.add(ligue);
+		return ligue;
+	}
+	
+
 	/**
 	 * Supprime une ligue de la liste ligues.
 	 * @param ligue
 	 */
-	
-
 	void remove(Ligue ligue)
 	{
 		ligues.remove(ligue);
 	}
 
+	
+	int insert(Ligue ligue) throws SauvegardeImpossible
+	{
+		return passerelle.insert(ligue);
+	}
+	
+	
 	/**
 	 * Retourne le root (super-utilisateur).
 	 * @return le root.

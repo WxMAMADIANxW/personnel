@@ -1,12 +1,11 @@
 package bdd;
 
-import java.util.*;
+import java.util.*; 
 import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
+import personnel.*;
 
-import personnel.Employe;
-import personnel.Ligue;
 
 public class LigueDAO {
 	private Connection myConn;
@@ -25,6 +24,7 @@ public class LigueDAO {
 		
 		System.out.println("DB connection successful to: " + dburl);	
 	}
+	
 //	public Employe addEmploye(String nom, String prenom, String mail, String password,LocalDate dateArrive) throws Exception{
 //		Employe employe = new Employe( nom, prenom, mail, password, dateArrive);
 //		
@@ -94,20 +94,17 @@ public class LigueDAO {
 			close(myStmt, myRs);
 			
 		}
-		return liste;
-		
-		 
-		
-		
+		return liste;	
+
 	}
+	
+	
 private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
 		
 		int idLig = myRs.getInt("IdLig");
 		String nomLig = myRs.getString("nomLig");
-		int idAdmin = myRs.getInt("IdAdmin");
 		
-		Ligue tempLigue = new Ligue(idLig,nomLig,idAdmin) ;
-		
+		Ligue tempLigue =  GestionPersonnel.getGestionPersonnel().addLigue(idLig,nomLig);	
 		return tempLigue;
 	}
 	

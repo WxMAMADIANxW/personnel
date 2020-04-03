@@ -17,11 +17,12 @@ import java.util.TreeSet;
 public class Ligue implements Serializable, Comparable<Ligue>
 {
 	private static final long serialVersionUID = 1L;
+	private int id = -1;
 	private String nom;
 	private SortedSet<Employe> employes;
 	private Employe administrateur;
-	private int idLig;
-	private int idAdmin;
+	private GestionPersonnel gestionPersonnel;
+	
 	
 	/**
 	 * Crée une ligue.
@@ -30,14 +31,21 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @param idAdmin 
 	 */
 	
-	public Ligue(int idLig, String nom, int idAdmin)
+	Ligue(GestionPersonnel gestionPersonnel, String nom) throws SauvegardeImpossible
 	{
-		this.idLig = idLig;
-		this.idAdmin = idAdmin;
+		this(gestionPersonnel, -1, nom);
+		this.id = gestionPersonnel.insert(this); 
+	}
+
+	
+	Ligue(GestionPersonnel gestionPersonnel, int id, String nom)
+	{
+		
 		this.nom = nom;
 		employes = new TreeSet<>();
-		administrateur = GestionPersonnel.getGestionPersonnel().getRoot();
-		GestionPersonnel.getGestionPersonnel().add(this);
+		this.gestionPersonnel = gestionPersonnel;
+		administrateur = gestionPersonnel.getRoot();
+		this.id = id;
 	}
 
 	/**
@@ -108,7 +116,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 
 	public Employe addEmploye(String nom, String prenom, String mail, String password,LocalDate dateArrive)
 	{
-		Employe employe = new Employe( nom, prenom, mail, password, dateArrive );
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive);
 		employes.add(employe);
 		return employe;
 	}
@@ -138,6 +146,6 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	@Override
 	public String toString()
 	{
-		return idLig+"|"+idAdmin+"	|"+nom+"\n";
+		return ""+nom+"\n";
 	}
 }
