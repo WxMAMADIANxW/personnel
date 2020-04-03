@@ -19,13 +19,9 @@ CREATE TABLE employe
 CREATE TABLE ligue
 (
     IdLig INT AUTO_INCREMENT PRIMARY KEY,
-    IdAdmin INT,
     nomLig VARCHAR(50) NOT NULL
  );
    
 ALTER TABLE employe
 ADD FOREIGN KEY (IdLig) REFERENCES ligue(IdLig);
-
-ALTER TABLE ligue
-ADD FOREIGN KEY (IdAdmin) REFERENCES employe(IdEmp);
 
