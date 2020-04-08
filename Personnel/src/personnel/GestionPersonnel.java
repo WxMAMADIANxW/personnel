@@ -118,7 +118,7 @@ public class GestionPersonnel implements Serializable
 	public void removeLigue(Ligue ligue) {
 		try {
 			passerelle.removeLigue(ligue);
-			
+			remove(ligue);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
