@@ -162,7 +162,7 @@ private LocalDate  getDate() {
 
 	private Option supprimer(Ligue ligue)
 	{
-		return new Option("Supprimer", "d", () -> {gestionPersonnel.removeLigue(ligue.getId(),ligue.getNom());});
+		return new Option("Supprimer", "d", () -> {gestionPersonnel.removeLigue(ligue);});
 	}
 	private Option finContrat(Employe employe) {
 		return new Option("Ajouter une date de fin de contrat ","k",

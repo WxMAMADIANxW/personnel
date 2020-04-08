@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.*;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -114,8 +115,14 @@ public class GestionPersonnel implements Serializable
 	{
 		return passerelle.insert(ligue);
 	}
-	public void removeLigue(int id, String nom) {
-		passerelle.getGestionPersonnel().removeLigue(id, nom);
+	public void removeLigue(Ligue ligue) {
+		try {
+			passerelle.removeLigue(ligue);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**

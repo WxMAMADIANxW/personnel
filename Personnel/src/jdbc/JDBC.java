@@ -98,30 +98,42 @@ public class JDBC implements Passerelle {
 		}
 
 
+		
+
+
 		@Override
 		
-			public void removeLigue(int idLig,String nomLig) throws SQLException {
+			public void removeLigue(Ligue ligue) throws SQLException {
 				Statement myStmt = null;
-				
+				String requete = "DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+ligue.getNom()+"\" AND `ligue`.`idLig`="+ligue.getId();
 				int myRs = 0;
 				int rsMeta = 0;
 				try {
-					myStmt = connection.createStatement();
-					myRs = myStmt.executeUpdate("DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+nomLig+"\" AND `ligue`.`idLig`="+idLig);
-					rsMeta = myRs;	
-				}
-				
-				catch(SQLException e){
+					try {
+						
+						PreparedStatement instruction;
+						instruction = connection.prepareStatement(requete);
+						instruction.executeUpdate();
+						
+						//myStmt = connection.createStatement();
+						//myRs = myStmt.executeUpdate(requete);
+						//rsMeta = myRs;
+					}
+					
+					catch(SQLException e){
+						throw new SauvegardeImpossible(e);
+					}
+					
+					finally {
+						
+						close(myStmt);
+						
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
-		            System.out.println(e);
-		            System.exit(0);
 				}
-				
-				finally {
-					
-					close(myStmt);
-					
-				}
+				GestionPersonnel.getGestionPersonnel();
 			}
 		private static void close( Statement myStmt)
 				throws SQLException {
@@ -132,19 +144,12 @@ public class JDBC implements Passerelle {
 				myStmt.close();
 			}
 		}
-		private static void close( Statement myStmt, ResultSet myRs)
-				throws SQLException {
 
-			if (myRs != null) {
-				myRs.close();
-			}
 
-			if (myStmt != null) {
-				myStmt.close();
-			}
-		}
+		
+		
 			
-		}
+	}
 		
       
 

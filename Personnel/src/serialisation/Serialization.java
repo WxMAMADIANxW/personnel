@@ -81,8 +81,10 @@ public class Serialization implements personnel.Passerelle
 		return -1;
 	}
 
+	
+
 	@Override
-	public void removeLigue(int id, String nom) throws SQLException {
+	public void removeLigue(Ligue ligue) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}

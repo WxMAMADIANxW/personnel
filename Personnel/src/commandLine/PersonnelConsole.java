@@ -71,6 +71,8 @@ public class PersonnelConsole
 		return ok;
 	}
 	
+	
+	
 	public static void main(String[] args)
 	{
 		PersonnelConsole personnelConsole = new PersonnelConsole(GestionPersonnel.getGestionPersonnel());
