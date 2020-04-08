@@ -96,7 +96,56 @@ public class JDBC implements Passerelle {
 				throw new SauvegardeImpossible(exception);
 			}		
 		}
+
+
+		@Override
 		
+			public void removeLigue(int idLig,String nomLig) throws SQLException {
+				Statement myStmt = null;
+				
+				int myRs = 0;
+				int rsMeta = 0;
+				try {
+					myStmt = connection.createStatement();
+					myRs = myStmt.executeUpdate("DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+nomLig+"\" AND `ligue`.`idLig`="+idLig);
+					rsMeta = myRs;	
+				}
+				
+				catch(SQLException e){
+					e.printStackTrace();
+		            System.out.println(e);
+		            System.exit(0);
+				}
+				
+				finally {
+					
+					close(myStmt);
+					
+				}
+			}
+		private static void close( Statement myStmt)
+				throws SQLException {
+
+			
+
+			if (myStmt != null) {
+				myStmt.close();
+			}
+		}
+		private static void close( Statement myStmt, ResultSet myRs)
+				throws SQLException {
+
+			if (myRs != null) {
+				myRs.close();
+			}
+
+			if (myStmt != null) {
+				myStmt.close();
+			}
+		}
+			
+		}
 		
-		
-	}
+      
+
+	

@@ -114,7 +114,9 @@ public class GestionPersonnel implements Serializable
 	{
 		return passerelle.insert(ligue);
 	}
-	
+	public void removeLigue(int id, String nom) {
+		passerelle.getGestionPersonnel().removeLigue(id, nom);
+	}
 	
 	/**
 	 * Retourne le root (super-utilisateur).
