@@ -31,9 +31,39 @@ public class LigueDAO {
 	}
 
 	
-	public Ligue addLigue(Ligue ligue) throws Exception{
-		return null;
+	public void removeLigue(int idLig,String nomLig) throws SQLException {
+		Statement myStmt = null;
+		@SuppressWarnings("null")
+		int myRs = 0;
+		int rsMeta = 0;
+		try {
+			myStmt = myConn.createStatement();
+			myRs = myStmt.executeUpdate("DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+nomLig+"\" AND `ligue`.`idLig`="+idLig);
+			rsMeta = myRs;	
+		}
+		
+		catch(SQLException e){
+			e.printStackTrace();
+            System.out.println(e);
+            System.exit(0);
+		}
+		
+		finally {
+			
+			close(myStmt);
+			
+		}
 	}
+	private void close(Statement myStmt) throws SQLException {
+		// TODO Auto-generated method stub
+
+
+			if (myStmt != null) {
+				myStmt.close();
+			}
+	}
+
+
 	public List<Ligue> getLigues() throws Exception {
 		List<Ligue> liste = new ArrayList<Ligue>();
 		
@@ -104,10 +134,10 @@ public class LigueDAO {
 	
 	public static void main(String[] args) throws Exception {
 			LigueDAO dao = new LigueDAO();
-			int idLig = 3;
-			String nomLig = "FMA";
-			Ligue ligue = new Ligue(GestionPersonnel.getGestionPersonnel(),nomLig);
+			Ligue ligue = new Ligue(GestionPersonnel.getGestionPersonnel(),"La machine");
 			dao.getLigues().add(ligue);
+			String nomLig = "pastis";
+			dao.removeLigue(1,nomLig);
 			System.out.println(dao.getLigues());
 			
 	}
