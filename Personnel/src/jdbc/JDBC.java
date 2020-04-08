@@ -114,10 +114,6 @@ public class JDBC implements Passerelle {
 						PreparedStatement instruction;
 						instruction = connection.prepareStatement(requete);
 						instruction.executeUpdate();
-						
-						//myStmt = connection.createStatement();
-						//myRs = myStmt.executeUpdate(requete);
-						//rsMeta = myRs;
 					}
 					
 					catch(SQLException e){
