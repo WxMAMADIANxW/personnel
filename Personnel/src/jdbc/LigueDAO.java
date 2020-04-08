@@ -31,37 +31,9 @@ public class LigueDAO {
 	}
 
 	
-//	public Employe addEmploye(String nom, String prenom, String mail, String password,LocalDate dateArrive) throws Exception{
-//		Employe employe = new Employe( nom, prenom, mail, password, dateArrive);
-//		
-//		Statement myStmt = null;
-//		ResultSet myRs = null;
-//		ResultSetMetaData rsMeta = null;
-//		try {
-//			myStmt = myConn.createStatement();
-//			myRs = myStmt.executeQuery("insert into employe(IdLig) values (1)");
-//			rsMeta = myRs.getMetaData();
-//			
-//			for(int i = 1; i <= rsMeta.getColumnCount(); i++)
-//	         {
-//	             System.out.print("" + rsMeta.getColumnName(i).toUpperCase() + "	|");
-//	         }
-//			
-//			System.out.println();
-//			 while(myRs.next()) 
-//	         {
-//	             for (int i = 1; i <= rsMeta.getColumnCount(); i++)
-//	             {
-//	                 System.out.print("" + myRs.getObject(i).toString() + "	|");
-//	             }
-//	             return employe;
-//	         }
-//		}
-//		finally {
-//			close(myStmt,myRs);
-//		}
-//	}
-	
+	public Ligue addLigue(Ligue ligue) throws Exception{
+		return null;
+	}
 	public List<Ligue> getLigues() throws Exception {
 		List<Ligue> liste = new ArrayList<Ligue>();
 		
@@ -85,7 +57,7 @@ public class LigueDAO {
 				 Ligue tempLigue = convertRowToLigue(myRs);
 	             liste.add(tempLigue);
 	         }
-			 
+		
 			
 		}
 		
@@ -103,9 +75,9 @@ public class LigueDAO {
 		return liste;	
 
 	}
+		
 	
-	
-private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
+	private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
 		
 		int idLig = myRs.getInt("IdLig");
 		String nomLig = myRs.getString("nomLig");
@@ -128,9 +100,16 @@ private Ligue convertRowToLigue(ResultSet myRs) throws SQLException {
 		}
 	}
 	
+	
+	
 	public static void main(String[] args) throws Exception {
 			LigueDAO dao = new LigueDAO();
+			int idLig = 3;
+			String nomLig = "FMA";
+			Ligue ligue = new Ligue(GestionPersonnel.getGestionPersonnel(),nomLig);
+			dao.getLigues().add(ligue);
 			System.out.println(dao.getLigues());
+			
 	}
 	
 }

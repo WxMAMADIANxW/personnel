@@ -31,7 +31,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @param idAdmin 
 	 */
 	
-	Ligue(GestionPersonnel gestionPersonnel, String nom) throws SauvegardeImpossible
+	public Ligue(GestionPersonnel gestionPersonnel, String nom) throws SauvegardeImpossible
 	{
 		this(gestionPersonnel, -1, nom);
 		this.id = gestionPersonnel.insert(this); 
@@ -146,6 +146,6 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	@Override
 	public String toString()
 	{
-		return ""+nom+"\n";
+		return id+"|"+nom+"\n";
 	}
 }

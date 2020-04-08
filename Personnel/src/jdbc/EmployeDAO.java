@@ -86,7 +86,7 @@ public class EmployeDAO{
 		 
 		 myStmt = myConn.createStatement();
 		 nb = myStmt.executeUpdate("INSERT INTO employe"
-		 		+ " VALUES ('10', '1', 'Lopes', 'Anthony', 'aLopes@ol.com', 'lopes' , '0' , '2020-03-17', null)");
+		 		+ " VALUES ('48', '1', 'Lopes', 'Anthony', 'aLopes@ol.com', 'lopes' , '0' , '2020-03-17', null)");
 		 
 		 System.out.println("nb lignes modifs : " +nb);
 		 
