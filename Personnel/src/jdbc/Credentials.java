@@ -5,7 +5,7 @@ public class Credentials {
 	private static String driver ="mysql",
             driverClassName = "com.mysql.cj.jdbc.Driver",
             host = "localhost", 
-            port ="3308",
+            port ="3306",
             database ="personnel",
             user = "root",
             password = "",

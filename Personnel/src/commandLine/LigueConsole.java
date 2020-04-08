@@ -77,6 +77,7 @@ public class LigueConsole
 		menu.add(changerAdministrateur(ligue));
 		menu.add(changerNom(ligue));
 		menu.add(supprimer(ligue));
+		menu.setAutoBack(true);
 		menu.addBack("q");
 		return menu;
 	}
@@ -122,6 +123,7 @@ private LocalDate  getDate() {
 		menu.add(employeConsole.editerEmploye(employe));
 		menu.add(finContrat(employe));
 		menu.add(supprimerEmploye(employe));
+		menu.setAutoBack(true);
 		menu.addBack("q");
 		return menu;
 	}
