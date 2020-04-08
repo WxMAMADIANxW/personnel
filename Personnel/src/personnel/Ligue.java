@@ -62,7 +62,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * Change le nom.
 	 * @param nom le nouveau nom de la ligue.
 	 */
-
+	public int getId() {
+		return this.id;
+	}
 	public void setNom(String nom)
 	{
 		this.nom = nom;
@@ -134,6 +136,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public void remove()
 	{
 		GestionPersonnel.getGestionPersonnel().remove(this);
+	
 	}
 	
 
