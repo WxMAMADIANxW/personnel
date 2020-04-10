@@ -95,10 +95,7 @@ private LocalDate  getDate() {
 	private Option changerNom(final Ligue ligue)
 	{
 		return new Option("Renommer", "r", 
-				() -> {
-					
-							String	nouveauNom = getString("Saisissez le nouveau nom de la ligue : ");
-							gestionPersonnel.changerNomLigue(ligue, nouveauNom);});
+				() -> {ligue.setNom(getString("Nouveau nom : "));});
 	}
 
 	private List<Ligue> selectionnerLigue()

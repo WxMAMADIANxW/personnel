@@ -90,7 +90,7 @@ public class Serialization implements personnel.Passerelle
 	}
 
 	@Override
-	public void changerNomLigue(Ligue ligue, String nouveauNom) throws SQLException {
+	public void updateLigue(Ligue ligue, String nouveauNom) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}

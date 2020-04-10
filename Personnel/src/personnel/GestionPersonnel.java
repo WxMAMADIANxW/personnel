@@ -122,7 +122,7 @@ public class GestionPersonnel implements Serializable
 	
 	public void changerNomLigue(Ligue ligue,String nouveauNom) {
 		try {
-			passerelle.changerNomLigue(ligue,nouveauNom);
+			passerelle.updateLigue(ligue,nouveauNom);
 			ligue.setNom(nouveauNom);
 		} catch (SQLException e) {
 			e.printStackTrace();
