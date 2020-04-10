@@ -8,4 +8,5 @@ public interface Passerelle
 	public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel)  throws SauvegardeImpossible;
 	public int insert(Ligue ligue) throws SauvegardeImpossible;
 	void removeLigue(Ligue ligue) throws SQLException;
+	void changerNomLigue(Ligue ligue, String nouveauNom) throws SQLException;
 }

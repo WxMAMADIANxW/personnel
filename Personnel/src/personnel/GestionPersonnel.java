@@ -1,5 +1,7 @@
 package personnel;
 
+import static commandLineMenus.rendering.examples.util.InOut.getString;
+
 import java.io.*;
 import java.sql.SQLException;
 import java.util.Collections;
@@ -115,6 +117,18 @@ public class GestionPersonnel implements Serializable
 	{
 		return passerelle.insert(ligue);
 	}
+	
+	
+	
+	public void changerNomLigue(Ligue ligue,String nouveauNom) {
+		try {
+			passerelle.changerNomLigue(ligue,nouveauNom);
+			ligue.setNom(nouveauNom);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void removeLigue(Ligue ligue) {
 		try {
 			passerelle.removeLigue(ligue);

@@ -98,7 +98,7 @@ public class JDBC implements Passerelle {
 		}
 
 
-		
+			
 
 
 		@Override
@@ -106,8 +106,6 @@ public class JDBC implements Passerelle {
 			public void removeLigue(Ligue ligue) throws SQLException {
 				Statement myStmt = null;
 				String requete = "DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+ligue.getNom()+"\" AND `ligue`.`idLig`="+ligue.getId();
-				int myRs = 0;
-				int rsMeta = 0;
 				try {
 					try {
 						
@@ -131,7 +129,8 @@ public class JDBC implements Passerelle {
 				}
 				GestionPersonnel.getGestionPersonnel();
 			}
-		private static void close( Statement myStmt)
+			
+			private static void close( Statement myStmt)
 				throws SQLException {
 
 			
@@ -139,6 +138,28 @@ public class JDBC implements Passerelle {
 			if (myStmt != null) {
 				myStmt.close();
 			}
+		}
+
+
+		@Override
+		public void changerNomLigue(Ligue ligue,String nouveauNom) throws SQLException {
+			Statement myStmt = null;
+			String requete = "UPDATE ligue Set nomLig = \""+nouveauNom+"\" WHERE IdLig ="+ligue.getId();
+			
+			try {
+				PreparedStatement instruction;
+				instruction = connection.prepareStatement(requete);
+				instruction.executeUpdate();
+			}
+			catch(SQLException e){
+				e.printStackTrace();	
+			}
+			finally {
+				
+				close(myStmt);
+				
+			}
+			
 		}
 
 
