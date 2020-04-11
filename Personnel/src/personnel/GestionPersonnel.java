@@ -120,10 +120,10 @@ public class GestionPersonnel implements Serializable
 	
 	
 	
-	public void changerNomLigue(Ligue ligue,String nouveauNom) {
+	public void updateLigue(Ligue ligue) {
 		try {
-			passerelle.updateLigue(ligue,nouveauNom);
-			ligue.setNom(nouveauNom);
+			passerelle.updateLigue(ligue);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

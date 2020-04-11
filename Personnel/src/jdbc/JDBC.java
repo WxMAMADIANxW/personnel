@@ -142,9 +142,9 @@ public class JDBC implements Passerelle {
 
 
 		@Override
-		public void updateLigue(Ligue ligue,String nouveauNom) throws SQLException {
+		public void updateLigue(Ligue ligue) throws SQLException {
 			Statement myStmt = null;
-			String requete = "UPDATE ligue Set nomLig = \""+nouveauNom+"\" WHERE IdLig ="+ligue.getId();
+			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" WHERE IdLig ="+ligue.getId();
 			
 			try {
 				PreparedStatement instruction;

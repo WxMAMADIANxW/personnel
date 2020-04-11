@@ -68,6 +68,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		gestionPersonnel.updateLigue(this);
 	}
 
 	/**
