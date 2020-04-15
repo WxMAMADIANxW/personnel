@@ -144,12 +144,15 @@ public class JDBC implements Passerelle {
 		@Override
 		public void updateLigue(Ligue ligue) throws SQLException {
 			Statement myStmt = null;
-			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" WHERE IdLig ="+ligue.getId();
+			String requeteNomLigue = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" WHERE IdLig ="+ligue.getId();
+			String requeteAdministrateur = "UPDATE ligue Set IdAdmin ="+ligue.getAdministrateur().getId()+"WHERE IdLig ="+ligue.getId();
 			
 			try {
-				PreparedStatement instruction;
-				instruction = connection.prepareStatement(requete);
-				instruction.executeUpdate();
+				PreparedStatement instructionNomLigue, instructionAdministrateur;
+				instructionNomLigue = connection.prepareStatement(requeteNomLigue);
+				instructionNomLigue.executeUpdate();
+				instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
+				instructionAdministrateur.executeUpdate();
 			}
 			catch(SQLException e){
 				e.printStackTrace();	
