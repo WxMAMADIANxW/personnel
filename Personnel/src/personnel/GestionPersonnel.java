@@ -1,6 +1,9 @@
 package personnel;
 
+import static commandLineMenus.rendering.examples.util.InOut.getString;
+
 import java.io.*;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -116,6 +119,26 @@ public class GestionPersonnel implements Serializable
 	}
 	
 	
+	
+	public void updateLigue(Ligue ligue) {
+		try {
+			passerelle.updateLigue(ligue);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removeLigue(Ligue ligue) {
+		try {
+			passerelle.removeLigue(ligue);
+			remove(ligue);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Retourne le root (super-utilisateur).
 	 * @return le root.
@@ -125,4 +148,7 @@ public class GestionPersonnel implements Serializable
 	{
 		return root;
 	}
+
+
+	
 }

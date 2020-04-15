@@ -20,6 +20,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private LocalDate dateArrive , dateDepart;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
+	private int idEmp;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrive)
 	{
@@ -30,6 +31,17 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.mail = mail;
 		this.dateArrive = dateArrive;
 		this.ligue = ligue;
+	}
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue,int idEmp, String nom, String prenom, String mail, String password, LocalDate dateArrive)
+	{
+		this.gestionPersonnel = gestionPersonnel;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.mail = mail;
+		this.dateArrive = dateArrive;
+		this.ligue = ligue;
+		this.idEmp = idEmp;
 	}
 	
 	/**
@@ -256,5 +268,9 @@ public class Employe implements Serializable, Comparable<Employe>
 		else
 			res += ligue.toString();
 		return res + ")";
+	}
+	public int getId() {
+		// TODO Auto-generated method stub
+		return this.idEmp;
 	}
 }

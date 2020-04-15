@@ -96,6 +96,76 @@ public class JDBC implements Passerelle {
 				throw new SauvegardeImpossible(exception);
 			}		
 		}
+
+
+			
+
+
+		@Override
+		
+			public void removeLigue(Ligue ligue) throws SQLException {
+				Statement myStmt = null;
+				String requete = "DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+ligue.getNom()+"\" AND `ligue`.`idLig`="+ligue.getId();
+				try {
+					try {
+						
+						PreparedStatement instruction;
+						instruction = connection.prepareStatement(requete);
+						instruction.executeUpdate();
+					}
+					
+					catch(SQLException e){
+						throw new SauvegardeImpossible(e);
+					}
+					
+					finally {
+						
+						close(myStmt);
+						
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				GestionPersonnel.getGestionPersonnel();
+			}
+			
+			private static void close( Statement myStmt)
+				throws SQLException {
+
+			
+
+			if (myStmt != null) {
+				myStmt.close();
+			}
+		}
+
+
+		@Override
+		public void updateLigue(Ligue ligue) throws SQLException {
+			Statement myStmt = null;
+			String requeteNomLigue = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" WHERE IdLig ="+ligue.getId();
+			String requeteAdministrateur = "UPDATE ligue Set IdAdmin ="+ligue.getAdministrateur().getId()+"WHERE IdLig ="+ligue.getId();
+			
+			try {
+				PreparedStatement instructionNomLigue, instructionAdministrateur;
+				instructionNomLigue = connection.prepareStatement(requeteNomLigue);
+				instructionNomLigue.executeUpdate();
+				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
+				//instructionAdministrateur.executeUpdate();
+			}
+			catch(SQLException e){
+				e.printStackTrace();	
+			}
+			finally {
+				
+				close(myStmt);
+				
+			}
+			
+		}
+
+
 		
 		
 		public void removeLigue(String nomLig) throws SQLException {
@@ -146,5 +216,9 @@ public class JDBC implements Passerelle {
 			}		
 		}
 		
-		
+	
 	}
+		
+      
+
+	

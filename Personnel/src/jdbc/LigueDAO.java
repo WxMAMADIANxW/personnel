@@ -134,10 +134,6 @@ public class LigueDAO {
 	
 	public static void main(String[] args) throws Exception {
 			LigueDAO dao = new LigueDAO();
-			Ligue ligue = new Ligue(GestionPersonnel.getGestionPersonnel(),"La machine");
-			dao.getLigues().add(ligue);
-			String nomLig = "pastis";
-			dao.removeLigue(1,nomLig);
 			System.out.println(dao.getLigues());
 			
 	}
