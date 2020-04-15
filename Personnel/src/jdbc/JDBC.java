@@ -98,5 +98,53 @@ public class JDBC implements Passerelle {
 		}
 		
 		
+		public void removeLigue(String nomLig) throws SQLException {
+			/*
+			Statement myStmt = null;
+			@SuppressWarnings("null")
+			int myRs = 0;
+			int rsMeta = 0;
+			try {
+				myRs = myStmt.executeUpdate("DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+nomLig+"\" AND `ligue`.`idLig`="+idLig);
+				rsMeta = myRs;	
+			}
+			*/
+			try 
+			{
+				PreparedStatement instruction;
+				instruction = connection.prepareStatement("Delete from ligue WHERE nomLig = \""+nomLig+"\"");
+				instruction.executeUpdate();
+				
+			} 
+			
+			catch (SQLException exception) 
+			{
+				exception.printStackTrace();
+			}		
+			
+		}
+		
+		
+		@Override
+		public int insert(Employe employe) throws SauvegardeImpossible 
+		{
+			try 
+			{
+				PreparedStatement instruction;
+				instruction = connection.prepareStatement("insert into employe (nomEmp, preEmp, mail, Password, dateArrive, dateDepart) values(?)", Statement.RETURN_GENERATED_KEYS);
+				instruction.setString(1, employe.getNom());		
+				instruction.executeUpdate();
+				ResultSet id = instruction.getGeneratedKeys();
+				id.next();
+				return id.getInt(1);
+				
+			} 
+			catch (SQLException exception) 
+			{
+				exception.printStackTrace();
+				throw new SauvegardeImpossible(exception);
+			}		
+		}
+		
 		
 	}

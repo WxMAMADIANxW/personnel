@@ -44,7 +44,7 @@ class testLigue
 	void  testGetAdministrateur() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Bowling");
-		Ligue autreLigue = gestionPersonnel.addLigue(2,"Liga");
+		Ligue autreLigue = gestionPersonnel.addLigue("Liga");
 		Employe employe1 = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "azerty",null);
 		Employe employe2 = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty",null);
 		ligue.setAdministrateur(employe1);
@@ -80,7 +80,7 @@ class testLigue
 	@Test
 	void testToString() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		String nom = "Fortnite";
 		ligue.setNom(nom);
 		assertTrue(ligue.toString().contains("Bowling"));
@@ -89,7 +89,7 @@ class testLigue
 	
 	void testGetEmployes() throws SauvegardeImpossible
 	{
-		Ligue ligue = gestionPersonnel.addLigue(1,"Bowling");
+		Ligue ligue = gestionPersonnel.addLigue("Bowling");
 		Employe employe = ligue.addEmploye("Aouar", "Houssem", "aouar@gmail.com", "aouar",null);
 		assertTrue(ligue.getEmployes().contains(employe));
 	}
