@@ -19,7 +19,8 @@ CREATE TABLE employe
 CREATE TABLE ligue
 (
     IdLig INT AUTO_INCREMENT PRIMARY KEY,
-    nomLig VARCHAR(50) NOT NULL
+    nomLig VARCHAR(50) NOT NULL,
+    IdAdmin int 
  );
    
 ALTER TABLE employe
