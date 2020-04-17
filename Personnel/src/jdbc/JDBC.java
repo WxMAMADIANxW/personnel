@@ -45,20 +45,25 @@ public class JDBC implements Passerelle {
 				String requete = "select * from ligue";
 				
 				Statement instruction = connection.createStatement();
+				Statement instruction2 = connection.createStatement();
 				ResultSet ligues = instruction.executeQuery(requete);
 				while (ligues.next()) {
+					gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
 					Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
-					ResultSet employes = instruction.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
+					ResultSet employes = instruction2.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
+					
 					while(employes.next()) {
-						LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
-						ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
+					LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
+					ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
 						
 					}
 				}
-					}
+			}
 			catch (SQLException e)
 			{
 				System.out.println(e);
+				e.printStackTrace();
+				
 			}
 			return gestionPersonnel;
 		}
