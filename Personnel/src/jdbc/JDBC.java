@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 import personnel.*;
 
@@ -42,11 +43,19 @@ public class JDBC implements Passerelle {
 			try 
 			{
 				String requete = "select * from ligue";
+				
 				Statement instruction = connection.createStatement();
 				ResultSet ligues = instruction.executeQuery(requete);
-				while (ligues.next())
-					gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
-			}
+				while (ligues.next()) {
+					Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
+					ResultSet employes = instruction.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
+					while(employes.next()) {
+						LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
+						ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
+						
+					}
+				}
+					}
 			catch (SQLException e)
 			{
 				System.out.println(e);
@@ -54,6 +63,9 @@ public class JDBC implements Passerelle {
 			return gestionPersonnel;
 		}
 		
+
+		
+
 
 		@Override
 		public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel) throws SauvegardeImpossible 
@@ -144,12 +156,12 @@ public class JDBC implements Passerelle {
 		@Override
 		public void updateLigue(Ligue ligue) throws SQLException {
 			Statement myStmt = null;
-			String requeteNomLigue = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" WHERE IdLig ="+ligue.getId();
-			String requeteAdministrateur = "UPDATE ligue Set IdAdmin ="+ligue.getAdministrateur().getId()+"WHERE IdLig ="+ligue.getId();
+			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" ,  IdAdmin="+ligue.getAdministrateur().getId()+" WHERE ligue.IdLig ="+ligue.getId();
+			
 			
 			try {
 				PreparedStatement instructionNomLigue, instructionAdministrateur;
-				instructionNomLigue = connection.prepareStatement(requeteNomLigue);
+				instructionNomLigue = connection.prepareStatement(requete);
 				instructionNomLigue.executeUpdate();
 				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
 				//instructionAdministrateur.executeUpdate();
