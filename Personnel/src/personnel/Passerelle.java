@@ -10,4 +10,5 @@ public interface Passerelle
 	public void insert(Employe employe) throws SauvegardeImpossible;
 	void removeLigue(Ligue ligue) throws SQLException;
 	void updateLigue(Ligue ligue) throws SQLException;
+	void removeEmp(Employe employe);
 }
