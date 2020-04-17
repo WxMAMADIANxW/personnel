@@ -49,6 +49,7 @@ public class JDBC implements Passerelle {
 				while (ligues.next()) {
 					Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
 					ResultSet employes = instruction.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
+					System.out.println("Bonjour");
 					while(employes.next()) {
 						LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
 						ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
@@ -58,6 +59,8 @@ public class JDBC implements Passerelle {
 					}
 			catch (SQLException e)
 			{
+				e.printStackTrace();
+				System.out.println("Bonjour");
 				System.out.println(e);
 			}
 			return gestionPersonnel;
@@ -161,6 +164,7 @@ public class JDBC implements Passerelle {
 			
 			try {
 				PreparedStatement instructionNomLigue, instructionAdministrateur;
+				
 				instructionNomLigue = connection.prepareStatement(requete);
 				instructionNomLigue.executeUpdate();
 				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
@@ -195,6 +199,8 @@ public class JDBC implements Passerelle {
 			{
 				PreparedStatement instruction;
 				instruction = connection.prepareStatement("Delete from ligue WHERE nomLig = \""+nomLig+"\"");
+				System.out.println("ddd");
+				
 				instruction.executeUpdate();
 				
 			} 
@@ -208,18 +214,16 @@ public class JDBC implements Passerelle {
 		
 		
 		@Override
-		public int insert(Employe employe) throws SauvegardeImpossible 
+		public void insert(Employe employe) throws SauvegardeImpossible 
 		{
 			try 
 			{
 				PreparedStatement instruction;
 				instruction = connection.prepareStatement("insert into employe (nomEmp, preEmp, mail, Password, dateArrive, dateDepart) values(?)", Statement.RETURN_GENERATED_KEYS);
-				instruction.setString(1, employe.getNom());		
-				instruction.executeUpdate();
-				ResultSet id = instruction.getGeneratedKeys();
-				id.next();
-				return id.getInt(1);
 				
+				instruction.setString(1, employe.getNom());	
+				instruction.executeUpdate();
+			
 			} 
 			catch (SQLException exception) 
 			{
