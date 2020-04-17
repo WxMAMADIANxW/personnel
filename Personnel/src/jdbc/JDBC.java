@@ -152,7 +152,34 @@ public class JDBC implements Passerelle {
 			}
 		}
 
-
+		@Override 
+			
+		public void removeEmp(Employe employe) {
+			Statement myStmt = null;
+			String requete = "DELETE FROM `employe` WHERE `employe`.`nomEmp` = \""+employe.getNom()+"\" AND `employe`.`idEmp`="+employe.getId();
+			try {
+				try {
+						
+					PreparedStatement instruction;
+					instruction = connection.prepareStatement(requete);
+					instruction.executeUpdate();
+				}
+					
+				catch(SQLException e){
+					throw new SauvegardeImpossible(e);
+				}
+					
+				finally {
+					close(myStmt);
+						
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			GestionPersonnel.getGestionPersonnel();
+		}
+		
 		@Override
 		public void updateLigue(Ligue ligue) throws SQLException {
 			Statement myStmt = null;
