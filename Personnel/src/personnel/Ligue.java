@@ -69,6 +69,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public int getId() {
 		return this.id;
 	}
+	
 	public void setNom(String nom)
 	{
 		this.nom = nom;

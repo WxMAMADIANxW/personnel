@@ -35,7 +35,8 @@ public class JDBC implements Passerelle {
 			}
 		}
 		
-
+		
+		
 		@Override
 		public GestionPersonnel getGestionPersonnel() 
 		{
@@ -45,18 +46,28 @@ public class JDBC implements Passerelle {
 				String requete = "select * from ligue";
 				
 				Statement instruction = connection.createStatement();
+				Statement instruction2 = connection.createStatement();
 				ResultSet ligues = instruction.executeQuery(requete);
-				
+				while (ligues.next()) {
+					gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
+					Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
+					ResultSet employes = instruction2.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
+					
+					while(employes.next()) {
+					LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
+					ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
+						
 					}
+				}
+			}
 			catch (SQLException e)
 			{
+				System.out.println(e);
 				e.printStackTrace();
+				
 			}
 			return gestionPersonnel;
 		}
-		
-
-		
 
 
 		@Override
@@ -81,7 +92,7 @@ public class JDBC implements Passerelle {
 
 		
 		@Override
-		public int insert(Ligue ligue) throws SauvegardeImpossible 
+		public int insertLigue(Ligue ligue) throws SauvegardeImpossible 
 		{
 			try 
 			{
@@ -146,7 +157,7 @@ public class JDBC implements Passerelle {
 
 		@Override 
 			
-		public void removeEmp(Employe employe) {
+		public void removeEmploye(Employe employe) {
 			Statement myStmt = null;
 			String requete = "DELETE FROM `employe` WHERE `employe`.`nomEmp` = \""+employe.getNom()+"\" AND `employe`.`idEmp`="+employe.getId();
 			try {
@@ -171,18 +182,18 @@ public class JDBC implements Passerelle {
 			}
 			GestionPersonnel.getGestionPersonnel();
 		}
+
 		
 		@Override
 		public void updateLigue(Ligue ligue) throws SQLException {
-			Statement myStmt = null;
+			PreparedStatement myStmt = null;
 			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" ,  IdAdmin="+ligue.getAdministrateur().getId()+" WHERE ligue.IdLig ="+ligue.getId();
 			
 			
 			try {
-				PreparedStatement instructionNomLigue;
-				
-				instructionNomLigue = connection.prepareStatement(requete);
-				instructionNomLigue.executeUpdate();
+			//	PreparedStatement instructionNomLigue, instructionAdministrateur;
+				myStmt = connection.prepareStatement(requete);
+				myStmt.executeUpdate();
 				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
 				//instructionAdministrateur.executeUpdate();
 			}
@@ -196,21 +207,10 @@ public class JDBC implements Passerelle {
 			}
 			
 		}
-
-
 		
 		
 		public void removeLigue(String nomLig) throws SQLException {
-			/*
-			Statement myStmt = null;
-			@SuppressWarnings("null")
-			int myRs = 0;
-			int rsMeta = 0;
-			try {
-				myRs = myStmt.executeUpdate("DELETE FROM `ligue` WHERE `ligue`.`nomLig` = \""+nomLig+"\" AND `ligue`.`idLig`="+idLig);
-				rsMeta = myRs;	
-			}
-			*/
+			
 			try 
 			{
 				PreparedStatement instruction;
@@ -228,7 +228,7 @@ public class JDBC implements Passerelle {
 		
 		
 		@Override
-		public void insert(Employe employe) throws SauvegardeImpossible 
+		public void insertEmploye(Employe employe) throws SauvegardeImpossible 
 		{
 			try 
 			{

@@ -119,7 +119,7 @@ public class GestionPersonnel implements Serializable
 	
 	int insert(Ligue ligue) throws SauvegardeImpossible
 	{
-		return passerelle.insert(ligue);
+		return passerelle.insertLigue(ligue);
 	}
 	
 	
@@ -153,8 +153,13 @@ public class GestionPersonnel implements Serializable
 		return root;
 	}
 	
+	public void insertEmploye(Employe employe) throws SauvegardeImpossible {
+		passerelle.insertEmploye(employe);
+		insertEmploye(employe);
+	}
+	
 	public void removeEmp(Employe employe) {
-		passerelle.removeEmp(employe);
+		passerelle.removeEmploye(employe);
 		removeEmploye(employe);
 	}
 
