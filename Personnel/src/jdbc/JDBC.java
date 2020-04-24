@@ -46,22 +46,11 @@ public class JDBC implements Passerelle {
 				
 				Statement instruction = connection.createStatement();
 				ResultSet ligues = instruction.executeQuery(requete);
-				while (ligues.next()) {
-					Ligue ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
-					ResultSet employes = instruction.executeQuery("Select * from employe where employe.IdLig ="+ligues.getInt(1));
-					System.out.println("Bonjour");
-					while(employes.next()) {
-						LocalDate dateArrive = LocalDate.parse(employes.getString(8)); 
-						ligue.addEmploye(employes.getInt(1), employes.getString(3), employes.getString(4), employes.getString(5),employes.getString(6), dateArrive);
-						
-					}
-				}
+				
 					}
 			catch (SQLException e)
 			{
 				e.printStackTrace();
-				System.out.println("Bonjour");
-				System.out.println(e);
 			}
 			return gestionPersonnel;
 		}
@@ -190,7 +179,7 @@ public class JDBC implements Passerelle {
 			
 			
 			try {
-				PreparedStatement instructionNomLigue, instructionAdministrateur;
+				PreparedStatement instructionNomLigue;
 				
 				instructionNomLigue = connection.prepareStatement(requete);
 				instructionNomLigue.executeUpdate();
@@ -226,8 +215,6 @@ public class JDBC implements Passerelle {
 			{
 				PreparedStatement instruction;
 				instruction = connection.prepareStatement("Delete from ligue WHERE nomLig = \""+nomLig+"\"");
-				System.out.println("ddd");
-				
 				instruction.executeUpdate();
 				
 			} 
@@ -247,8 +234,6 @@ public class JDBC implements Passerelle {
 			{
 				PreparedStatement instruction;
 				instruction = connection.prepareStatement("insert into employe (nomEmp, preEmp, mail, Password, dateArrive, dateDepart) values(?)", Statement.RETURN_GENERATED_KEYS);
-				
-				instruction.setString(1, employe.getNom());	
 				instruction.executeUpdate();
 			
 			} 
