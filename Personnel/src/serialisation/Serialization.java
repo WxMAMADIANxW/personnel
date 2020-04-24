@@ -79,13 +79,13 @@ public class Serialization implements personnel.Passerelle
 	
 
 	@Override
-	public int insert(Ligue ligue) throws SauvegardeImpossible
+	public int insertLigue(Ligue ligue) throws SauvegardeImpossible
 	{
 		return -1;
 	}
 
 	@Override
-	public void insert(Employe employe) throws SauvegardeImpossible {
+	public void insertEmploye(Employe employe) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 	}
 	
@@ -103,7 +103,13 @@ public class Serialization implements personnel.Passerelle
 	}
 
 	@Override
-	public void removeEmp(Employe employe) {
+	public void removeEmploye(Employe employe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateEmlpoye(Employe employe) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}

@@ -153,10 +153,54 @@ public class JDBC implements Passerelle {
 			if (myStmt != null) {
 				myStmt.close();
 			}
-		}
+		}		
 
-		@Override 
+		
+		@Override
+		public void updateLigue(Ligue ligue) throws SQLException {
+			PreparedStatement myStmt = null;
+			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" ,  IdAdmin="+ligue.getAdministrateur().getId()
+					+" WHERE ligue.IdLig ="+ligue.getId();
 			
+			
+			try {
+			//	PreparedStatement instructionNomLigue, instructionAdministrateur;
+				myStmt = connection.prepareStatement(requete);
+				myStmt.executeUpdate();
+				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
+				//instructionAdministrateur.executeUpdate();
+			}
+			catch(SQLException e){
+				e.printStackTrace();	
+			}
+			finally {
+				
+				close(myStmt);
+				
+			}
+			
+		}
+		
+		
+		@Override
+		public void insertEmploye(Employe employe) throws SauvegardeImpossible 
+		{
+			try 
+			{
+				PreparedStatement instruction;
+				instruction = connection.prepareStatement("insert into employe (nomEmp, preEmp, mail, Password, dateArrive, dateDepart) values(?)", Statement.RETURN_GENERATED_KEYS);
+				instruction.executeUpdate();
+			
+			} 
+			catch (SQLException exception) 
+			{
+				exception.printStackTrace();
+				throw new SauvegardeImpossible(exception);
+			}		
+		}
+		
+		
+		@Override 	
 		public void removeEmploye(Employe employe) {
 			Statement myStmt = null;
 			String requete = "DELETE FROM `employe` WHERE `employe`.`nomEmp` = \""+employe.getNom()+"\" AND `employe`.`idEmp`="+employe.getId();
@@ -184,18 +228,18 @@ public class JDBC implements Passerelle {
 		}
 
 		
+		
 		@Override
-		public void updateLigue(Ligue ligue) throws SQLException {
+		public void updateEmlpoye(Employe employe) throws SQLException {
 			PreparedStatement myStmt = null;
-			String requete = "UPDATE ligue Set nomLig = \""+ligue.getNom()+"\" ,  IdAdmin="+ligue.getAdministrateur().getId()+" WHERE ligue.IdLig ="+ligue.getId();
+			String requete = "UPDATE ligue Set nomEmp = \""+employe.getNom()+"\" preEmp"+employe.getPrenom() +"\" mail" +employe.getMail() + 
+					"\" dateArrive"+employe.getDateArrive() +"\" dateDepart" +employe.getDateDepart() 
+					+ " WHERE employe.IdEmp ="+employe.getId();
 			
 			
 			try {
-			//	PreparedStatement instructionNomLigue, instructionAdministrateur;
 				myStmt = connection.prepareStatement(requete);
 				myStmt.executeUpdate();
-				//instructionAdministrateur = connection.prepareStatement(requeteAdministrateur);
-				//instructionAdministrateur.executeUpdate();
 			}
 			catch(SQLException e){
 				e.printStackTrace();	
@@ -207,43 +251,6 @@ public class JDBC implements Passerelle {
 			}
 			
 		}
-		
-		
-		public void removeLigue(String nomLig) throws SQLException {
-			
-			try 
-			{
-				PreparedStatement instruction;
-				instruction = connection.prepareStatement("Delete from ligue WHERE nomLig = \""+nomLig+"\"");
-				instruction.executeUpdate();
-				
-			} 
-			
-			catch (SQLException exception) 
-			{
-				exception.printStackTrace();
-			}		
-			
-		}
-		
-		
-		@Override
-		public void insertEmploye(Employe employe) throws SauvegardeImpossible 
-		{
-			try 
-			{
-				PreparedStatement instruction;
-				instruction = connection.prepareStatement("insert into employe (nomEmp, preEmp, mail, Password, dateArrive, dateDepart) values(?)", Statement.RETURN_GENERATED_KEYS);
-				instruction.executeUpdate();
-			
-			} 
-			catch (SQLException exception) 
-			{
-				exception.printStackTrace();
-				throw new SauvegardeImpossible(exception);
-			}		
-		}
-		
 	
 	}
 		

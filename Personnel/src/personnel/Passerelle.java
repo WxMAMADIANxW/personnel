@@ -11,4 +11,5 @@ public interface Passerelle
 	void removeLigue(Ligue ligue) throws SQLException;
 	void updateLigue(Ligue ligue) throws SQLException;
 	void removeEmploye(Employe employe);
+	void updateEmlpoye(Employe employe) throws SQLException;
 }
